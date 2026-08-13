@@ -9,6 +9,9 @@ export default defineConfig({
   site,
   output: 'static',
   adapter: cloudflare(),
+  session: {
+    driver: 'memory',
+  },
   integrations: site ? [sitemap()] : [],
   vite: {
     plugins: [tailwindcss()],
