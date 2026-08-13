@@ -1,0 +1,99 @@
+---
+import '../styles/global.css';
+
+const title = 'Gaya Street Kota Kinabalu — 走进亚庇最有生活感的一条街';
+const description = '一份以当地节奏为线索的加雅街旅行田野笔记：周日市集、老店屋、早餐、交通和附近散步路线。';
+const mapUrl = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3968.09116592099!2d116.07368461214215!3d5.982184143977763!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x323b698f870637b5%3A0xfbb01a6fe8fa566d!2z5Yqg6ZuF6KGX56S85ouc5aSp5biC5Zy6!5e0!3m2!1sms!2sus!4v1786583517386!5m2!1sms!2sus';
+const image = {
+  hero: '/manus-storage/gaya-street-hero_cd7eadcc.jpg',
+  market: '/manus-storage/gaya-street-market_cab3e6d5.jpg',
+  heritage: '/manus-storage/gaya-street-heritage_9fe555fa.jpg',
+  food: '/manus-storage/gaya-street-food_9b7cf409.jpg',
+  mark: '/manus-storage/gaya-street-mark_1e6c7132.png',
+};
+const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).toString() : undefined;
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'TouristAttraction',
+      name: 'Gaya Street Market',
+      alternateName: 'Pasar Minggu Gaya Street',
+      description,
+      url: canonical,
+      image: Astro.site ? new URL(image.hero, Astro.site).toString() : undefined,
+      address: { '@type': 'PostalAddress', streetAddress: 'Jalan Gaya', addressLocality: 'Kota Kinabalu', postalCode: '88000', addressRegion: 'Sabah', addressCountry: 'MY' },
+      geo: { '@type': 'GeoCoordinates', latitude: 5.9821841, longitude: 116.0736846 },
+      openingHours: ['Su 07:00-12:00'],
+      aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.4', reviewCount: '8967' },
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: [
+        { '@type': 'Question', name: '加雅街周日市集什么时候最值得逛？', acceptedAnswer: { '@type': 'Answer', text: '建议周日早上七点至十点抵达，气温较舒服，摊位和早餐选择也最完整。' } },
+        { '@type': 'Question', name: '从亚庇机场怎么去加雅街？', acceptedAnswer: { '@type': 'Answer', text: '机场到市中心约八公里，可选择出租车、网约车或机场巴士，再步行进入 Jalan Gaya。' } },
+        { '@type': 'Question', name: '需要门票吗？', acceptedAnswer: { '@type': 'Answer', text: '街道与周日市集通常不设门票，个别摊位消费和附近景点费用另计。' } },
+      ],
+    },
+  ],
+};
+---
+<!doctype html>
+<html lang="ms">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+    {canonical && <link rel="canonical" href={canonical} />}
+    {canonical && <meta property="og:url" content={canonical} />}
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content={image.hero} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" />
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-HXM22WWPKP"></script>
+    <script is:inline>
+      // @ts-nocheck
+      window['dataLayer'] = window['dataLayer'] || [];
+      window['gtag'] = window['gtag'] || function(){ window['dataLayer'].push(arguments); };
+      window['gtag']('js', new Date()); window['gtag']('config', 'G-HXM22WWPKP');
+    </script>
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="Gaya Street Field Notes home"><img src={image.mark} alt="" /><span>GAYA STREET<br /><em>FIELD NOTES</em></span></a>
+      <nav aria-label="主要导航"><a href="#story">街区气质</a><a href="#practical">实用信息</a><a href="#nearby">附近走走</a><a class="nav-marker" href="#map">→ 地图</a></nav>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <img class="hero-image" src={image.hero} alt="亚庇加雅街周日市集的街景与摊位" />
+        <div class="hero-shade"></div>
+        <div class="hero-copy"><p class="eyebrow light">05°58′N / 116°04′E · SABAH, MALAYSIA</p><h1>走进<br /><i>加雅街</i></h1><p class="hero-lede">在亚庇，星期天从一杯 kopi 和一条慢慢变热的街开始。</p><a class="button button-yellow" href="#story">开始步行 <span>↓</span></a></div>
+        <div class="hero-note"><span>FIELD NOTE 01</span><strong>Jalan Gaya</strong><small>一条从早餐开始的城市散步</small></div>
+      </section>
+
+      <section class="intro wrap" id="story"><div class="section-kicker"><span>01</span><span>THE STREET</span></div><div class="intro-copy"><p class="eyebrow">不是景点清单，是一段街道的脉搏。</p><h2>旧店屋下，<br /><i>周日有自己的速度。</i></h2><p>加雅街是亚庇老城区里最适合用脚认识的地方。工作日，它是咖啡店、老招牌和午后阴影；周日，整条 Jalan Gaya 让给市集，人们带着水果、手作、早餐和一点不赶时间的心情走来。</p><a class="text-link" href="#market">看见市集 →</a></div><div class="intro-aside"><div class="stamp">KK<br /><b>88000</b></div><p>这份笔记写给第一次来，也写给每次经过都会多停十分钟的人。</p></div></section>
+
+      <section class="market-section wrap" id="market"><div class="photo-frame"><img src={image.market} alt="加雅街周日市集的水果与手作摊位" /><span class="photo-caption">SUNDAY MARKET / 07:00—12:00</span></div><div class="market-copy"><div class="section-kicker"><span>02</span><span>THE SUNDAY WALK</span></div><h2>先找香味，<br /><i>再决定往哪走。</i></h2><p>从街口开始，不必急着完成路线。先绕到有蒸汽的摊位，买一份热早餐；再看一眼手工藤编、植物和本地小吃。市集的乐趣不在“买了什么”，而在每个摊位都把城市的日常摊在阳光里。</p><div class="mini-facts"><div><strong>07:00</strong><span>建议抵达</span></div><div><strong>2–3h</strong><span>舒适停留</span></div><div><strong>RM 5+</strong><span>早餐预算</span></div></div></div></section>
+
+      <section class="practical-band" id="practical"><div class="wrap"><div class="section-kicker light"><span>03</span><span>FIELD GUIDE</span></div><h2>把实用信息<br /><i>放在口袋里。</i></h2><div class="practical-grid"><article><span class="card-index">A / 到达</span><h3>详细交通</h3><p><b>机场：</b>Kota Kinabalu International Airport 距离市中心约 8 km。出租车或网约车通常最直接；机场巴士可到市中心，再沿 Jalan Pantai 步行。</p><p><b>公交：</b>以市中心站点为目标，抵达后从海滨一侧步行进入 Jalan Gaya。周日市集期间请预留绕行时间。</p><p><b>出租车：</b>直接报 “Gaya Street Sunday Market / Jalan Gaya”，并在下车前确认回程方式。</p></article><article><span class="card-index">B / 停留</span><h3>时间 & 费用</h3><p><b>最佳时段：</b>周日 07:00—10:00，较凉爽、摊位选择完整；傍晚适合回到附近夜市吃东西。</p><p><b>建议停留：</b>2—3 小时；如果加上早餐、老城散步和周边景点，可安排半天。</p><p><b>门票 / 费用：</b>街道和周日市集通常免费进入。消费以摊位和店家现场标价为准，建议准备小额现金。</p></article><article><span class="card-index">C / 停车</span><h3>停车信息</h3><p>市中心公共停车位和商场停车场是较稳妥选择。周日市集可能占用部分道路，建议提早到达，不要把车停在摊位通道或路口。</p><p class="tip">小提示：穿舒适鞋，带水，防晒；雨季随身带轻便雨具。</p></article></div></div></section>
+
+      <section class="heritage-section wrap"><div class="heritage-copy"><div class="section-kicker"><span>04</span><span>LOOK UP</span></div><h2>不要只看摊位，<br /><i>抬头看看老店屋。</i></h2><p>五脚基把店铺、行人和天气连在一起。褪色的立面、窄窄的招牌、旧式百叶窗和深深的檐下阴影，是加雅街最安静的风景。</p><p class="hand-note">← 走慢一点，建筑会开始说话。</p></div><div class="heritage-photo"><img src={image.heritage} alt="加雅街老店屋与五脚基" /></div></section>
+
+      <section class="food-section wrap" id="nearby"><div class="section-kicker"><span>05</span><span>AROUND THE BLOCK</span></div><div class="food-grid"><div><h2>周边美食，<br /><i>从一碗热汤开始。</i></h2><p>加雅街周边的好味道不需要复杂攻略：早餐去找 laksa、kopi 和脆皮小吃；晚上沿着 Jalan Gaya 走，感受 Api-Api 夜市的烟火气。</p><a class="text-link" href="#map">把味道放进地图 →</a></div><img src={image.food} alt="亚庇街头早餐与咖啡" /></div><div class="food-list"><div><b>01</b><span>Guan’s Kopitiam Gaya Street</span><small>111, Jalan Gaya · 咖啡店与早餐</small></div><div><b>02</b><span>Api-Api Night Food Market</span><small>Jalan Gaya · 夜晚的街头小吃</small></div><div><b>03</b><span>本地 laksa & kuih</span><small>沿街寻找，不必拘泥于一家店</small></div></div></section>
+
+      <section class="nearby-section"><div class="wrap"><div class="section-kicker light"><span>06</span><span>NEARBY STOPS</span></div><h2>把半天留给<br /><i>附近的风。</i></h2><div class="nearby-grid"><a href="#map"><span>01</span><strong>加雅街市场</strong><small>街道本身，就是第一站</small></a><a href="#map"><span>02</span><strong>Padang Merdeka</strong><small>适合沿着老城继续散步</small></a><a href="#map"><span>03</span><strong>Signal Hill</strong><small>想看城市与海的关系，往高处走</small></a></div></div></section>
+
+      <section class="map-section wrap" id="map"><div class="map-copy"><div class="section-kicker"><span>07</span><span>PIN THIS PLACE</span></div><h2>现在，<br /><i>知道往哪走了。</i></h2><p>把这张地图留在手机里。真正抵达之后，从街口开始，跟着人声、香味和檐下的阴影走。</p><a class="button button-ink" href="https://www.google.com/maps/search/?api=1&query=Gaya%20Street%2C%20Kota%20Kinabalu%2C%2088000%20Kota%20Kinabalu%2C%20Sabah%2C%20Malaysia" target="_blank" rel="noreferrer">打开 Google Maps ↗</a></div><div class="map-frame"><iframe src={mapUrl} title="Gaya Street Kota Kinabalu map" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe></div></section>
+
+      <section class="faq-section wrap"><div class="section-kicker"><span>08</span><span>QUICK ANSWERS</span></div><h2>出发前，<br /><i>先回答几个问题。</i></h2><div class="faq-list"><details open><summary>加雅街周日市集什么时候最值得逛？<span>+</span></summary><p>建议周日早上七点至十点抵达，气温较舒服，摊位和早餐选择也最完整。</p></details><details><summary>从亚庇机场怎么去加雅街？<span>+</span></summary><p>机场到市中心约八公里，可选择出租车、网约车或机场巴士，再步行进入 Jalan Gaya。</p></details><details><summary>需要门票吗？<span>+</span></summary><p>街道与周日市集通常不设门票，个别摊位消费和附近景点费用另计。</p></details></div></section>
+    </main>
+    <footer><div class="wrap footer-inner"><a class="brand" href="#top"><img src={image.mark} alt="" /><span>GAYA STREET<br /><em>FIELD NOTES</em></span></a><p>一条街，很多种抵达方式。<br /><small>非官方旅游信息整理，仅供行程参考；开放时间、费用与交通请以现场及官方信息为准。</small></p><span class="footer-coord">5.9821° N<br />116.0736° E</span></div></footer>
+  </body>
+</html>
