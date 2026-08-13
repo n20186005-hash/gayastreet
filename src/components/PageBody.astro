@@ -1,0 +1,107 @@
+---
+import type { Translation } from '../i18n/translations';
+import LanguageSwitcher from './LanguageSwitcher.astro';
+
+interface Props {
+  t: Translation;
+  lang: string;
+}
+
+const { t, lang } = Astro.props;
+
+const mapUrl = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3968.09116592099!2d116.07368461214215!3d5.982184143977763!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x323b698f870637b5%3A0xfbb01a6fe8fa566d!2z5Yqg6ZuF6KGX56S85ouc5aSp5biC5Zy6!5e0!3m2!1sms!2sus!4v1786583517386!5m2!1sms!2sus';
+const mapsUrl = 'https://maps.app.goo.gl/i1PGV12Mrwiad9M28';
+const image = {
+  hero: '/gallery/gaya-street-market-3.jpg',
+  market: '/gallery/gaya-street-market-2.jpg',
+  heritage: '/gallery/gaya-street-market-1.jpg',
+  food: '/gallery/gaya-street-market-4.jpg',
+  mark: '/gaya-mark.svg',
+};
+---
+<header class="site-header">
+  <a class="brand" href="#top" aria-label={t.brandAria}><img src={image.mark} alt={t.brandAria} width="42" height="42" /><span>GAYA STREET<br /><em>FIELD NOTES</em></span></a>
+  <nav aria-label="Navigation / 导航 / Navigasi"><a href="#story">{t.nav.story}</a><a href="#history">{t.nav.history}</a><a href="#market">{t.nav.market}</a><a href="#walk">{t.nav.walk}</a><a class="nav-marker" href="#map">→ {t.nav.map}</a><LanguageSwitcher current={lang} /></nav>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <img class="hero-image" src={image.hero} alt={t.gallery.items[2].cap} />
+    <div class="hero-shade"></div>
+    <div class="hero-copy"><p class="eyebrow light">{t.hero.eyebrow}</p><h1>{t.hero.h1[0]}<br /><i>{t.hero.h1[1]}</i></h1><p class="hero-lede">{t.hero.lede}</p><a class="button button-yellow" href="#story">{t.hero.cta} <span>↓</span></a></div>
+    <div class="hero-note"><span>{t.hero.noteLabel}</span><strong>{t.hero.noteName}</strong><small>{t.hero.noteSub}</small></div>
+  </section>
+
+  <section class="intro wrap" id="story"><div class="section-kicker"><span>01</span><span>THE STREET</span></div><div class="intro-copy"><p class="eyebrow">{t.intro.eyebrow}</p><h2>{t.intro.heading[0]}<br /><i>{t.intro.heading[1]}</i></h2><p>{t.intro.body}</p><a class="text-link" href="#history">{t.intro.link}</a></div><div class="intro-aside"><div class="stamp">KK<br /><b>88000</b></div><p>{t.intro.aside}</p></div></section>
+
+  <section class="glance-band wrap"><div class="section-kicker"><span>02</span><span>AT A GLANCE</span></div><div class="glance-grid">{t.glance.map((g) => (<div class:list={['glance-item', g.focus && 'glance-focus']}><span>{g.label}</span><strong>{g.value}</strong><small>{g.note}</small></div>))}</div></section>
+
+  <section class="history-section wrap" id="history"><div class="section-kicker"><span>03</span><span>STREET HISTORY</span></div><div class="history-grid"><div class="history-intro"><p class="eyebrow">{t.history.eyebrow}</p><h2>{t.history.heading[0]}<br /><i>{t.history.heading[1]}</i></h2><p>{t.history.body}</p></div><div class="timeline">{t.history.timeline.map((item) => (<div class="timeline-item"><span class="timeline-year">{item.year}</span><h3>{item.title}</h3><p>{item.text}</p></div>))}</div></div></section>
+
+  <section class="story-band wrap"><div class="section-kicker"><span>04</span><span>STORIES FROM THE STREET</span></div><div class="story-grid">{t.stories.map((s) => (<article class="story-card"><span class="story-no">{s.no}</span><span class="story-tag">{s.tag}</span><h3>{s.title}</h3><p>{s.text}</p><em class="hand-note">{s.note}</em></article>))}</div></section>
+
+  <section class="market-section wrap" id="market"><div class="photo-frame"><img src={image.market} alt={t.gallery.items[1].cap} /><span class="photo-caption">SUNDAY MARKET / 07:00—12:00</span></div><div class="market-copy"><div class="section-kicker"><span>05</span><span>{t.market.eyebrow}</span></div><h2>{t.market.heading[0]}<br /><i>{t.market.heading[1]}</i></h2><p>{t.market.body}</p><div class="mini-facts">{t.market.facts.map((f) => (<div><strong>{f.value}</strong><span>{f.label}</span></div>))}</div></div></section>
+
+  <section class="heritage-section wrap"><div class="heritage-copy"><div class="section-kicker"><span>06</span><span>{t.heritage.eyebrow}</span></div><h2>{t.heritage.heading[0]}<br /><i>{t.heritage.heading[1]}</i></h2><p>{t.heritage.body}</p><p class="hand-note">{t.heritage.note}</p></div><div class="heritage-photo"><img src={image.heritage} alt={t.gallery.items[0].cap} /></div></section>
+
+  <section class="walk-band" id="walk"><div class="wrap"><div class="section-kicker light"><span>07</span><span>{t.walk.eyebrow}</span></div><h2>{t.walk.heading[0]}<br /><i>{t.walk.heading[1]}</i></h2><div class="walk-route">{t.walk.items.map((w) => (<div class="walk-step"><b>{w.step}</b><span>{w.title}<small>{w.note}</small></span></div>))}</div></div></section>
+
+  <section class="practical-band" id="practical"><div class="wrap"><div class="section-kicker light"><span>08</span><span>{t.practical.eyebrow}</span></div><h2>{t.practical.heading[0]}<br /><i>{t.practical.heading[1]}</i></h2><div class="practical-grid">{t.practical.cards.map((c) => (<article><span class="card-index">{c.index}</span><h3>{c.title}</h3>{c.paras.map((p) => (<p>{p}</p>))}{c.tip && <p class="tip">{c.tip}</p>}</article>))}</div></div></section>
+
+  <section class="food-section wrap" id="nearby"><div class="section-kicker"><span>09</span><span>{t.food.eyebrow}</span></div><div class="food-grid"><div><h2>{t.food.heading[0]}<br /><i>{t.food.heading[1]}</i></h2><p>{t.food.body}</p><a class="text-link" href="#map">{t.food.link}</a></div><img src={image.food} alt={t.gallery.items[3].cap} /></div><div class="food-list">{t.food.items.map((f) => (<div><b>{f.no}</b><span>{f.name}</span><small>{f.note}</small></div>))}</div></section>
+
+  <section class="nearby-section"><div class="wrap"><div class="section-kicker light"><span>10</span><span>{t.nearby.eyebrow}</span></div><h2>{t.nearby.heading[0]}<br /><i>{t.nearby.heading[1]}</i></h2><div class="nearby-grid">{t.nearby.items.map((n) => (<a href="#map"><span>{n.no}</span><strong>{n.name}</strong><small>{n.note}</small></a>))}</div></div></section>
+
+  <section class="gallery-section wrap" id="gallery"><div class="section-kicker"><span>11</span><span>GALLERY</span></div><div class="gallery-grid">{t.gallery.items.map((g) => (<button type="button" data-src={g.src} data-cap={g.cap} aria-label={`${t.gallery.lightbox.ariaLabel}：${g.cap}`}><img src={g.src} alt={g.cap} loading="lazy" /></button>))}</div><p class="gallery-note">{t.gallery.note}</p></section>
+
+  <section class="map-section wrap" id="map"><div class="map-copy"><div class="section-kicker"><span>12</span><span>{t.map.eyebrow}</span></div><h2>{t.map.heading[0]}<br /><i>{t.map.heading[1]}</i></h2><p>{t.map.body}</p><a class="button button-ink" href={mapsUrl} target="_blank" rel="noreferrer">{t.map.cta}</a></div><div class="map-frame"><iframe src={mapUrl} title="Gaya Street Kota Kinabalu map" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe></div></section>
+
+  <section class="faq-section wrap"><div class="section-kicker"><span>13</span><span>QUICK ANSWERS</span></div><h2>{t.faqHeading[0]}<br /><i>{t.faqHeading[1]}</i></h2><div class="faq-list">{t.faq.map((f) => (<details><summary>{f.q}<span>+</span></summary><p>{f.a}</p></details>))}</div></section>
+
+  <section class="sources-section wrap"><div class="section-kicker"><span>14</span><span>SOURCES</span></div><div class="sources-grid"><div class="sources-intro"><p class="eyebrow">{t.sources.intro}</p><h2>{t.sources.heading[0]}<br /><i>{t.sources.heading[1]}</i></h2></div><div class="sources-list">{t.sources.items.map((s) => (<a href={s.href} target="_blank" rel="noreferrer"><span>{s.label}</span><small>{s.tag} ↗</small></a>))}</div></div><p class="sources-note">{t.sources.note}</p></section>
+</main>
+
+<footer><div class="wrap footer-inner"><a class="brand" href="#top" aria-label={t.brandAria}><img src={image.mark} alt={t.brandAria} width="42" height="42" /><span>GAYA STREET<br /><em>FIELD NOTES</em></span></a><p>{t.footer.tagline}<br /><small>{t.footer.small}</small></p><span class="footer-coord">5.9821° N<br />116.0736° E</span></div></footer>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label={t.gallery.lightbox.ariaLabel}>
+  <button class="lightbox-close" type="button" aria-label={t.gallery.lightbox.close}>&times;</button>
+  <button class="lightbox-prev" type="button" aria-label={t.gallery.lightbox.prev}>← {t.gallery.lightbox.prev}</button>
+  <img src="" alt="" />
+  <figcaption></figcaption>
+  <span class="lightbox-counter"></span>
+  <button class="lightbox-next" type="button" aria-label={t.gallery.lightbox.next}>{t.gallery.lightbox.next} →</button>
+</div>
+<script is:inline>
+  // @ts-nocheck
+  (function () {
+    var items = Array.prototype.slice.call(document.querySelectorAll('.gallery-grid button'));
+    var lb = document.getElementById('lightbox');
+    if (!lb || !items.length) return;
+    var img = lb.querySelector('img');
+    var cap = lb.querySelector('figcaption');
+    var counter = lb.querySelector('.lightbox-counter');
+    var idx = 0;
+    function show(i) {
+      idx = (i + items.length) % items.length;
+      var el = items[idx];
+      img.src = el.getAttribute('data-src');
+      img.alt = el.getAttribute('data-cap');
+      cap.textContent = el.getAttribute('data-cap');
+      counter.textContent = (idx + 1) + ' / ' + items.length;
+    }
+    items.forEach(function (el, i) {
+      el.addEventListener('click', function () { show(i); lb.classList.add('open'); document.body.style.overflow = 'hidden'; });
+    });
+    lb.querySelector('.lightbox-close').addEventListener('click', close);
+    lb.querySelector('.lightbox-prev').addEventListener('click', function () { show(idx - 1); });
+    lb.querySelector('.lightbox-next').addEventListener('click', function () { show(idx + 1); });
+    lb.addEventListener('click', function (e) { if (e.target === lb) close(); });
+    document.addEventListener('keydown', function (e) {
+      if (!lb.classList.contains('open')) return;
+      if (e.key === 'Escape') close();
+      if (e.key === 'ArrowLeft') show(idx - 1);
+      if (e.key === 'ArrowRight') show(idx + 1);
+    });
+    function close() { lb.classList.remove('open'); document.body.style.overflow = ''; }
+  })();
+</script>

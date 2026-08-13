@@ -1,0 +1,90 @@
+---
+import '../../styles/global.css';
+import PageBody from '../../components/PageBody.astro';
+import { translations } from '../../i18n/translations';
+import { languages } from '../../i18n/ui';
+
+export function getStaticPaths() {
+  return Object.keys(translations).map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params as { lang: string };
+const t = translations[lang];
+const currentPath = Astro.url.pathname;
+const canonical = Astro.site ? new URL(currentPath, Astro.site).toString() : undefined;
+const ogImage = Astro.site ? new URL('/gallery/gaya-street-market-3.jpg', Astro.site).toString() : '/gallery/gaya-street-market-3.jpg';
+const alternateUrls = Object.keys(translations).map((l) => ({
+  code: l,
+  htmlLang: languages[l].htmlLang,
+  href: Astro.site ? new URL(`/${l}/`, Astro.site).toString() : `/${l}/`,
+}));
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'TouristAttraction',
+      name: 'Gaya Street Market',
+      alternateName: 'Pasar Minggu Gaya Street',
+      description: t.meta.description,
+      url: canonical,
+      image: ogImage,
+      address: { '@type': 'PostalAddress', streetAddress: 'Jalan Gaya', addressLocality: 'Kota Kinabalu', postalCode: '88000', addressRegion: 'Sabah', addressCountry: 'MY' },
+      geo: { '@type': 'GeoCoordinates', latitude: 5.9821841, longitude: 116.0736846 },
+      openingHoursSpecification: {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: 'Sunday',
+        opens: '07:00',
+        closes: '12:00',
+      },
+      touristType: t.jsonLd.touristType,
+      aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.4', reviewCount: '8967' },
+      sameAs: [
+        'https://www.sabahtourism.com/',
+        'https://en.wikipedia.org/wiki/Kota_Kinabalu',
+      ],
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: t.faq.map((f) => ({
+        '@type': 'Question',
+        name: f.q,
+        acceptedAnswer: { '@type': 'Answer', text: f.a },
+      })),
+    },
+  ],
+};
+---
+<!doctype html>
+<html lang={t.htmlLang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={t.meta.description} />
+    <title>{t.meta.title}</title>
+    {canonical && <link rel="canonical" href={canonical} />}
+    <link rel="alternate" hreflang="x-default" href={alternateUrls.find((a) => a.code === 'ms')?.href} />
+    {alternateUrls.map((a) => (
+      <link rel="alternate" hreflang={a.htmlLang} href={a.href} />
+    ))}
+    {canonical && <meta property="og:url" content={canonical} />}
+    <meta property="og:title" content={t.meta.title} />
+    <meta property="og:description" content={t.meta.description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content={ogImage} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" />
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-YJTNXGWZNY"></script>
+    <script is:inline>
+      // @ts-nocheck
+      window['dataLayer'] = window['dataLayer'] || [];
+      window['gtag'] = window['gtag'] || function(){ window['dataLayer'].push(arguments); };
+      window['gtag']('js', new Date()); window['gtag']('config', 'G-YJTNXGWZNY');
+    </script>
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </head>
+  <body>
+    <PageBody t={t} lang={lang} />
+  </body>
+</html>

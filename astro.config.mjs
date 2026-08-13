@@ -9,10 +9,20 @@ export default defineConfig({
   site,
   output: 'static',
   adapter: cloudflare(),
+  i18n: {
+    defaultLocale: 'ms',
+    locales: ['ms', 'en', 'zh'],
+    routing: {
+      prefixDefaultLocale: true,
+    },
+  },
+  redirects: {
+    '/': '/ms/',
+  },
   session: {
     driver: 'memory',
   },
-  integrations: site ? [sitemap()] : [],
+  integrations: [sitemap()],
   vite: {
     plugins: [tailwindcss()],
   },

@@ -1,0 +1,20 @@
+---
+import { languages } from '../i18n/ui';
+
+interface Props {
+  current: string;
+}
+
+const { current } = Astro.props;
+
+const items = Object.entries(languages).map(([code, meta]) => ({
+  code,
+  label: meta.label,
+  href: `/${code}/`,
+}));
+---
+<span class="lang-switch" role="list" aria-label="Language / 语言 / Bahasa">
+  {items.map((l) => (
+    <a role="listitem" href={l.href} aria-current={l.code === current ? 'page' : undefined}>{l.label}</a>
+  ))}
+</span>
