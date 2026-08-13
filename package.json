@@ -12,8 +12,8 @@
     "check": "astro check",
     "build": "astro build",
     "preview": "astro preview --host 0.0.0.0",
-    "deploy": "wrangler deploy",
-    "deploy:dry-run": "wrangler deploy --dry-run"
+    "deploy": "wrangler pages deploy",
+    "deploy:dry-run": "wrangler pages deploy --dry-run"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
