@@ -11,7 +11,17 @@
     "dev": "astro dev --host 0.0.0.0",
     "check": "astro check",
     "build": "astro build",
-    "preview": "astro preview --host 0.0.0.0"
+    "preview": "astro preview --host 0.0.0.0",
+    "deploy": "wrangler pages deploy dist",
+    "deploy:pages": "wrangler pages deploy dist"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@tailwindcss/oxide",
+      "esbuild",
+      "sharp",
+      "workerd"
+    ]
   },
   "dependencies": {
     "@astrojs/cloudflare": "12.6.5",
