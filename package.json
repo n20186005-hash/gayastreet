@@ -1,0 +1,28 @@
+{
+  "name": "gaya-street-kota-kinabalu",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@9.15.5",
+  "engines": {
+    "node": "22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev --host 0.0.0.0",
+    "check": "astro check",
+    "build": "astro build",
+    "preview": "astro preview --host 0.0.0.0"
+  },
+  "dependencies": {
+    "@astrojs/cloudflare": "12.6.5",
+    "@astrojs/sitemap": "3.5.0",
+    "astro": "5.13.5"
+  },
+  "devDependencies": {
+    "@astrojs/check": "0.9.4",
+    "@tailwindcss/vite": "4.1.11",
+    "tailwindcss": "4.1.11",
+    "typescript": "5.8.3",
+    "wrangler": "4.28.1"
+  }
+}

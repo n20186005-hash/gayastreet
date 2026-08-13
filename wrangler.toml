@@ -1,0 +1,3 @@
+name = "gaya-street-kota-kinabalu"
+compatibility_date = "2026-08-13"
+pages_build_output_dir = "./dist"

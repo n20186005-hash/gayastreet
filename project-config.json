@@ -1,0 +1,34 @@
+{
+  "build_command": "pnpm run build",
+  "capabilities": [],
+  "dev_command": "pnpm run dev",
+  "env_vars": {},
+  "experiments": null,
+  "git_remote": {
+    "repo_url": "https://7f0548f6b28a1758d9bf7be630d36cb4.artifacts.cloudflare.net/git/prod/7gmLSZA8MVPvQbaaQtxehG.git",
+    "expiration": "2026-08-14T01:49:28.367Z",
+    "token": "art_v2_x_974ac238596740f58b8a5aa042acdc4933675692?expires=1786672168",
+    "backend": "GIT_BACKEND_ARTIFACTS"
+  },
+  "name": "gaya-street-kota-kinabalu",
+  "path": "/home/ubuntu/gaya-street-kota-kinabalu",
+  "port": 3000,
+  "secrets": {
+    "BUILT_IN_FORGE_API_KEY": "8JkUBHy9bd3FR4qmtEnRu7",
+    "BUILT_IN_FORGE_API_URL": "https://forge.manus.ai",
+    "JWT_SECRET": "Y2ZN3LosnMNP9CdhjsTYVN",
+    "OAUTH_SERVER_URL": "https://api.manus.im",
+    "OWNER_NAME": "Winter Grady",
+    "OWNER_OPEN_ID": "5cZePmXWEqHJxoXmLnCZb9",
+    "VITE_ANALYTICS_ENDPOINT": "https://manus-analytics.com",
+    "VITE_ANALYTICS_WEBSITE_ID": "c3351b99-f067-4f96-b1b8-76d6b18471c9",
+    "VITE_APP_ID": "7gmLSZA8MVPvQbaaQtxehG",
+    "VITE_APP_LOGO": "",
+    "VITE_APP_TITLE": "Gaya Street Kota Kinabalu",
+    "VITE_FRONTEND_FORGE_API_KEY": "kpborUBkWfPWWqdW7TzQfj",
+    "VITE_FRONTEND_FORGE_API_URL": "https://forge.manus.ai",
+    "VITE_OAUTH_PORTAL_URL": "https://manus.im"
+  },
+  "template_id": "web-static",
+  "test_command": "pnpm test"
+}
