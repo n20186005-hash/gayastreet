@@ -1,0 +1,103 @@
+---
+import type { Translation } from '../i18n/translations';
+import type { Guide } from '../data/guides';
+import { guides, guideSlugs } from '../data/guides';
+import LanguageSwitcher from './LanguageSwitcher.astro';
+import { webp, srcset } from '../lib/images';
+import { place } from '../lib/place';
+
+interface Props {
+  t: Translation;
+  lang: string;
+  guide: Guide;
+}
+
+const { t, lang, guide } = Astro.props;
+const home = `/${lang}/`;
+const otherGuides = guideSlugs
+  .filter((slug) => slug !== guide.slug)
+  .map((slug) => ({ slug, card: guides[slug][lang].card }));
+
+const pad = (n: number) => String(n).padStart(2, '0');
+---
+<header class="site-header">
+  <a class="brand" href={home} aria-label={t.brandAria}><img src="/gaya-mark.svg" alt={t.brandAria} width="42" height="42" /><span>GAYA STREET<br /><em>FIELD NOTES</em></span></a>
+  <nav aria-label="Navigation / 导航 / Navigasi"><a href={home}>{t.guide.back}</a><LanguageSwitcher current={lang} slug={guide.slug} /></nav>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <img class="hero-image" src={webp(guide.image, 1400)} srcset={srcset(guide.image)} sizes="100vw" alt={`${guide.hero.h1[0]} ${guide.hero.h1[1]}`} fetchpriority="high" decoding="async" />
+    <div class="hero-shade"></div>
+    <div class="hero-copy">
+      <nav class="guide-crumbs" aria-label="Breadcrumb"><a href={home}>{t.guide.crumbHome}</a><span>/</span><span>{guide.card.label}</span></nav>
+      <p class="eyebrow light">{guide.hero.eyebrow}</p>
+      <h1>{guide.hero.h1[0]}<br /><i>{guide.hero.h1[1]}</i></h1>
+      <p class="hero-lede">{guide.hero.lede}</p>
+    </div>
+  </section>
+
+  <section class="glance-band wrap">
+    <div class="section-kicker"><span>01</span><span>{t.guide.quickFacts}</span></div>
+    <div class="glance-grid guide-facts">
+      {guide.facts.map((f) => (<div class="glance-item"><span>{f.label}</span><strong>{f.value}</strong><small>{f.note}</small></div>))}
+    </div>
+  </section>
+
+  {guide.sections.map((s, i) => (
+    <section class="amenities-section wrap" id={`s${i + 1}`}>
+      <div class="section-kicker"><span>{pad(i + 2)}</span><span>{t.guide.sectionLabel}</span></div>
+      <h2>{s.heading}</h2>
+      <p class="amenities-body">{s.body}</p>
+      <div class="food-list">
+        {s.items.map((item) => (<div><b>{item.no}</b><span>{item.name}</span><small>{item.note}</small></div>))}
+      </div>
+    </section>
+  ))}
+
+  <section class="nearby-section" id="more-guides">
+    <div class="wrap">
+      <div class="section-kicker light"><span>{pad(guide.sections.length + 2)}</span><span>{t.guides.eyebrow}</span></div>
+      <h2>{t.guides.heading[0]}<br /><i>{t.guides.heading[1]}</i></h2>
+      <div class="nearby-grid">
+        {otherGuides.map((g) => (
+          <a href={`/${lang}/${g.slug}/`}><span>{g.card.label}</span><strong>{g.card.note}</strong></a>
+        ))}
+        <a href={home}><span>{t.guide.crumbHome}</span><strong>{t.intro.heading[0]}</strong></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="map-section wrap" id="map">
+    <div class="map-copy">
+      <div class="section-kicker"><span>{pad(guide.sections.length + 3)}</span><span>{t.map.eyebrow}</span></div>
+      <h2>{t.map.heading[0]}<br /><i>{t.map.heading[1]}</i></h2>
+      <p>{t.map.body}</p>
+      <a class="button button-ink" href={place.hasMap} target="_blank" rel="noreferrer">{t.map.cta}</a>
+    </div>
+    <div class="map-frame"><iframe src={place.mapEmbed} title="Gaya Street Kota Kinabalu map" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+  </section>
+
+  <section class="faq-section wrap" id="faq">
+    <div>
+      <div class="section-kicker"><span>{pad(guide.sections.length + 4)}</span><span>{t.guide.faqKicker}</span></div>
+      <h2>{t.guide.faqHeading[0]}<br /><i>{t.guide.faqHeading[1]}</i></h2>
+    </div>
+    <div class="faq-list">
+      {guide.faq.map((f) => (<details><summary>{f.q}<span>+</span></summary><p>{f.a}</p></details>))}
+    </div>
+  </section>
+
+  <section class="sources-section wrap">
+    <div class="section-kicker"><span>{pad(guide.sections.length + 5)}</span><span>SOURCES</span></div>
+    <div class="sources-grid">
+      <div class="sources-intro"><p class="eyebrow">{t.sources.intro}</p><h2>{t.sources.heading[0]}<br /><i>{t.sources.heading[1]}</i></h2></div>
+      <div class="sources-list">
+        {t.sources.items.map((source) => (<a href={source.href} target="_blank" rel="noreferrer"><span>{source.label}</span><small>{source.tag} ↗</small></a>))}
+      </div>
+    </div>
+    <p class="sources-note">{t.sources.note}</p>
+  </section>
+</main>
+
+<footer><div class="wrap footer-inner"><a class="brand" href="#top" aria-label={t.brandAria}><img src="/gaya-mark.svg" alt={t.brandAria} width="42" height="42" /><span>GAYA STREET<br /><em>FIELD NOTES</em></span></a><p>{t.footer.tagline}<br /><small>{t.footer.small}</small></p><span class="footer-coord">5.9821° N<br />116.0736° E</span></div></footer>

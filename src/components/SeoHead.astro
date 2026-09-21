@@ -1,0 +1,76 @@
+---
+import { languages, defaultLang } from '../i18n/ui';
+
+interface Props {
+  lang: string;
+  title: string;
+  description: string;
+  /** Site-relative path, locale-prefixed, e.g. `/en/sunday-market/` */
+  path: string;
+  jsonLd: unknown;
+  /** Hero photo to preload (already the LCP element on every page). */
+  heroImage?: string;
+  ogImage?: string;
+  ogImageAlt?: string;
+}
+
+const { lang, title, description, path, jsonLd, heroImage, ogImage = '/og-cover.jpg', ogImageAlt = 'Gaya Street, Kota Kinabalu' } =
+  Astro.props;
+
+const locales = Object.keys(languages);
+const site = Astro.site;
+const abs = (p: string) => (site ? new URL(p, site).toString() : p);
+/** Swap the locale segment so alternates point at the same page in every language. */
+const inLocale = (p: string, l: string) => p.replace(/^\/[^/]+\//, `/${l}/`);
+
+const canonical = abs(path);
+const ogImageAbs = abs(ogImage);
+const alternates = locales.map((l) => ({
+  code: l,
+  hreflangs: languages[l].hreflangs,
+  ogLocale: languages[l].ogLocale,
+  href: abs(inLocale(path, l)),
+}));
+const xDefault = abs(inLocale(path, defaultLang));
+const ogLocaleAlternates = alternates.filter((a) => a.code !== lang);
+---
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<meta name="description" content={description} />
+<title>{title}</title>
+<link rel="canonical" href={canonical} />
+<link rel="alternate" hreflang="x-default" href={xDefault} />
+{alternates.flatMap((a) => a.hreflangs.map((code) => <link rel="alternate" hreflang={code} href={a.href} />))}
+<meta name="theme-color" content="#132a3a" />
+<meta name="robots" content="index, follow, max-image-preview:large" />
+{heroImage && <link rel="preload" as="image" href={heroImage} fetchpriority="high" />}
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Gaya Street Field Notes" />
+<meta property="og:url" content={canonical} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={ogImageAbs} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content={ogImageAlt} />
+<meta property="og:locale" content={languages[lang].ogLocale} />
+{ogLocaleAlternates.map((a) => <meta property="og:locale:alternate" content={a.ogLocale} />)}
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImageAbs} />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+<link
+  href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500&family=Source+Sans+3:wght@400;600;700&display=swap"
+  rel="stylesheet"
+/>
+<script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-YJTNXGWZNY"></script>
+<script is:inline>
+  // @ts-nocheck
+  window['dataLayer'] = window['dataLayer'] || [];
+  window['gtag'] = window['gtag'] || function(){ window['dataLayer'].push(arguments); };
+  window['gtag']('js', new Date()); window['gtag']('config', 'G-YJTNXGWZNY');
+</script>
+<script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />

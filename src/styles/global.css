@@ -53,6 +53,18 @@
 .walk-step span{font-family:'Fraunces',serif;font-size:25px;letter-spacing:-.02em}
 .walk-step small{display:block;color:var(--muted);font-size:15px;margin-top:5px}
 
+/* ── AMENITIES 周邊實用設施 ── */
+.amenities-section{padding:110px 0 0}
+.amenities-section h2{margin:35px 0 0}
+.amenities-body{color:var(--muted);font-size:19px;max-width:640px;margin:24px 0 0}
+.amenities-section .food-list{margin-top:45px}
+
+/* ── TOPIC GUIDES 专题页 ── */
+.guide-crumbs{display:flex;gap:10px;align-items:center;margin-bottom:28px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,250,242,.72)}
+.guide-crumbs a:hover{color:var(--yellow)}
+.guide-facts{grid-template-columns:repeat(3,1fr)}
+.guides-intro{color:rgba(255,250,242,.72);font-size:18px;max-width:640px;margin:24px 0 0}
+
 /* ── GALLERY 相册 + Lightbox ── */
 .gallery-section{padding-bottom:160px}
 .gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:60px}
@@ -89,6 +101,9 @@
 .walk-band{padding:85px 0 100px}
 .walk-step{grid-template-columns:44px 1fr;gap:14px;padding:22px 0}
 .gallery-grid{grid-template-columns:repeat(2,1fr)}
+.amenities-section{padding:95px 0 0}
+.amenities-section h2{margin:28px 0 0}
+.guide-facts{grid-template-columns:repeat(2,1fr)}
 .gallery-section{padding-bottom:100px}
 .lightbox-prev{left:4px}.lightbox-next{right:4px}
 .sources-section{padding:95px 0 100px}

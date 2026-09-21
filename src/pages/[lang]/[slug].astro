@@ -1,0 +1,131 @@
+---
+import '../../styles/global.css';
+import SeoHead from '../../components/SeoHead.astro';
+import GuideBody from '../../components/GuideBody.astro';
+import { translations } from '../../i18n/translations';
+import { languages } from '../../i18n/ui';
+import { guides, guideSlugs } from '../../data/guides';
+import { nextSunday, postalAddress, geo, place, TZ } from '../../lib/place';
+import { webp } from '../../lib/images';
+
+export function getStaticPaths() {
+  return Object.keys(translations).flatMap((lang) =>
+    guideSlugs.map((slug) => ({ params: { lang, slug } })),
+  );
+}
+
+const { lang, slug } = Astro.params as { lang: string; slug: string };
+const t = translations[lang];
+const guide = guides[slug][lang];
+const locales = Object.keys(translations);
+
+const path = `/${lang}/${slug}/`;
+const canonical = Astro.site ? new URL(path, Astro.site).toString() : path;
+const siteUrl = Astro.site ? Astro.site.toString() : '';
+const homeUrl = Astro.site ? new URL(`/${lang}/`, Astro.site).toString() : `/${lang}/`;
+const ogImage = Astro.site ? new URL('/og-cover.jpg', Astro.site).toString() : '/og-cover.jpg';
+
+const event = (() => {
+  if (!guide.event) return null;
+  const isSunday = guide.event === 'sunday-market';
+  const day = nextSunday();
+  return {
+    '@type': 'Event',
+    '@id': `${canonical}#${guide.event}`,
+    name: isSunday ? t.jsonLd.marketName : t.jsonLd.nightMarketName,
+    description: isSunday ? t.jsonLd.marketDescription : t.jsonLd.nightMarketDescription,
+    url: canonical,
+    image: ogImage,
+    inLanguage: t.htmlLang,
+    startDate: isSunday ? `${day}T07:00${TZ}` : `${day}T17:00${TZ}`,
+    endDate: isSunday ? `${day}T12:00${TZ}` : `${day}T22:00${TZ}`,
+    eventStatus: 'https://schema.org/EventScheduled',
+    eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+    isAccessibleForFree: true,
+    location: {
+      '@type': 'Place',
+      name: isSunday ? 'Gaya Street (Jalan Gaya)' : t.jsonLd.nightMarketName,
+      address: postalAddress,
+      geo,
+      hasMap: place.hasMap,
+    },
+    eventSchedule: {
+      '@type': 'Schedule',
+      repeatFrequency: 'P1W',
+      byDay: isSunday
+        ? 'https://schema.org/Sunday'
+        : [
+            'https://schema.org/Monday',
+            'https://schema.org/Tuesday',
+            'https://schema.org/Wednesday',
+            'https://schema.org/Thursday',
+            'https://schema.org/Friday',
+            'https://schema.org/Saturday',
+            'https://schema.org/Sunday',
+          ],
+      startTime: isSunday ? '07:00' : '17:00',
+      endTime: isSunday ? '12:00' : '22:00',
+      scheduleTimezone: place.timezone,
+    },
+  };
+})();
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebSite',
+      '@id': `${siteUrl}#website`,
+      url: siteUrl,
+      name: 'Gaya Street Field Notes',
+      inLanguage: locales.map((l) => languages[l].htmlLang),
+    },
+    {
+      '@type': 'WebPage',
+      '@id': `${canonical}#webpage`,
+      url: canonical,
+      name: guide.meta.title,
+      description: guide.meta.description,
+      inLanguage: t.htmlLang,
+      isPartOf: { '@id': `${siteUrl}#website` },
+      about: { '@id': `${homeUrl}#attraction` },
+      breadcrumb: { '@id': `${canonical}#breadcrumb` },
+      primaryImageOfPage: ogImage,
+    },
+    {
+      '@type': 'BreadcrumbList',
+      '@id': `${canonical}#breadcrumb`,
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: t.guide.crumbHome, item: homeUrl },
+        { '@type': 'ListItem', position: 2, name: guide.meta.title, item: canonical },
+      ],
+    },
+    {
+      '@type': 'FAQPage',
+      '@id': `${canonical}#faq`,
+      mainEntity: guide.faq.map((f) => ({
+        '@type': 'Question',
+        name: f.q,
+        acceptedAnswer: { '@type': 'Answer', text: f.a },
+      })),
+    },
+    ...(event ? [event] : []),
+  ],
+};
+---
+<!doctype html>
+<html lang={t.htmlLang}>
+  <head>
+    <SeoHead
+      lang={lang}
+      title={guide.meta.title}
+      description={guide.meta.description}
+      path={path}
+      jsonLd={jsonLd}
+      heroImage={webp(guide.image, 1400)}
+    />
+  </head>
+  <body>
+    <GuideBody t={t} lang={lang} guide={guide} />
+  </body>
+</html>

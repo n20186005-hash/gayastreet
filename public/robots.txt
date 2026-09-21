@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# HTTPS canonical host only — HTTP is redirected by Cloudflare (Always Use HTTPS)
+Sitemap: https://gayastreet.com/sitemap-index.xml

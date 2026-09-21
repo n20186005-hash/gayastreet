@@ -3,8 +3,8 @@ import type { Translation } from './types';
 export const zh: Translation = {
   htmlLang: 'zh-CN',
   meta: {
-    title: 'Gaya Street Kota Kinabalu — 走进亚庇最有生活感的一条街',
-    description: '一份以当地节奏为线索的加雅街旅行田野笔记：周日市集、老店屋、早餐、交通和附近散步路线。',
+    title: '加雅街周日市集｜亚庇 Gaya Street 营业时间、必吃美食与地图',
+    description: '加雅街周日市集 07:00–12:00 全攻略：必吃早餐与手作摊位、停车与交通、Api-Api 夜市、周边必做景点与步行地图，免费入场。',
   },
   nav: { story: '街区气质', history: '历史', market: '市集', walk: '路线', map: '地图' },
   brandAria: '加雅街田野笔记 · 返回顶部',
@@ -30,7 +30,7 @@ export const zh: Translation = {
     { label: '门票', value: '免费', note: '摊位消费另计' },
     { label: '最佳时段', value: '清晨', note: '凉爽、摊位最完整' },
     { label: '停留时长', value: '2–3 h', note: '加老城散步可排半天' },
-    { label: '评分', value: '4.4 / 8,967', note: '综合访客评价' },
+    { label: '评分', value: '4.4 / 8,967', note: 'Google 地图评论 · 2026 年 9 月同步' },
   ],
   history: {
     eyebrow: '一段街道，七次转身。',
@@ -122,12 +122,28 @@ export const zh: Translation = {
     ],
   },
   nearby: {
-    eyebrow: 'NEARBY STOPS',
-    heading: ['把半天留给', '附近的风。'],
+    eyebrow: 'THINGS TO DO NEARBY',
+    heading: ['加雅街周边必做，', '半天刚刚好。'],
     items: [
-      { no: '01', name: '加雅街市场', note: '街道本身，就是第一站' },
-      { no: '02', name: 'Padang Merdeka', note: '适合沿着老城继续散步' },
-      { no: '03', name: 'Signal Hill', note: '想看城市与海的关系，往高处走' },
+      { no: '01', name: '加雅街周日市集', note: '第一站 · 07:00–12:00，街道本身就是市集' },
+      { no: '02', name: 'Padang Merdeka 与老城散步', note: '市集南侧，平缓好走' },
+      { no: '03', name: 'Signal Hill 与艾京生钟楼', note: '上坡十来分钟，一次看见城市与海' },
+      { no: '04', name: 'Api-Api 夜市', note: '天黑后回来，沙爹、海鲜与 laksa' },
+      { no: '05', name: '亚庇海滨 Esplanade', note: '步行约十分钟，看日落' },
+      { no: '06', name: '老店屋与牌楼拍照路线', note: '五脚基骑楼、老招牌与清晨光线' },
+    ],
+  },
+  amenities: {
+    eyebrow: 'PRACTICAL STUFF',
+    heading: ['银行、ATM 与', '街边实用设施。'],
+    body: '当天用得到的东西基本都在老城区内：Jalan Gaya 沿线与两侧的银行和 ATM、附近的合法兑换店、药局、便利店和住宿，步行几分钟都能到。',
+    items: [
+      { no: '01', name: '银行与 ATM', note: 'Maybank 等银行就在 Jalan Gaya 沿线与街旁，提款机是拿马币最直接的方式' },
+      { no: '02', name: '换钱所', note: '老城区与附近商场有合法兑换店，换之前比一下汇率' },
+      { no: '03', name: '药局与便利店', note: '步行几分钟可达，补水、防晒和日常用品都好买' },
+      { no: '04', name: '洗手间与饮水', note: '街上公共洗手间有限，可用咖啡店或附近商场，建议自带水' },
+      { no: '05', name: '住宿', note: '老城民宿与市区酒店都在市集步行范围内' },
+      { no: '06', name: '网络', note: '多数咖啡店提供 Wi-Fi；机场办一张本地 SIM 或 eSIM 最省事' },
     ],
   },
   gallery: {
@@ -151,6 +167,19 @@ export const zh: Translation = {
     cta: '打开 Google Maps ↗',
   },
   faqHeading: ['出发前，', '先回答几个问题。'],
+  guides: {
+    eyebrow: '继续走下去',
+    heading: ['继续走：', '一条街的三份指南。'],
+    intro: '每份指南只回答一个旅客真正在搜的问题——营业时间、吃什么、附近还能做什么。',
+  },
+  guide: {
+    back: '街道指南',
+    crumbHome: '加雅街',
+    quickFacts: '重点速览',
+    sectionLabel: '本篇内容',
+    faqKicker: '快速问答',
+    faqHeading: ['还有疑问？', '先回答几个问题。'],
+  },
   faq: [
     { q: '加雅街周日市集什么时候最值得逛？', a: '建议周日早上七点至十点抵达，气温较舒服，摊位和早餐选择也最完整。' },
     { q: '周日市集几点收摊？', a: '市集通常在中午十二点左右结束，摊主从十一点半开始陆续收摊，想逛得完整建议早点到。' },
@@ -158,6 +187,10 @@ export const zh: Translation = {
     { q: '从亚庇机场怎么去加雅街？', a: '机场到市中心约八公里，可选择出租车、网约车或机场巴士，再步行进入 Jalan Gaya。' },
     { q: '市集收现金还是电子支付？', a: '摊位以现金为主，建议准备小额马币（RM）；部分店家支持扫码支付，可在消费前询问。' },
     { q: '需要门票吗？', a: '街道与周日市集通常不设门票，个别摊位消费和附近景点费用另计。' },
+    { q: '加雅街附近有 ATM 或换钱所吗？', a: '有。Maybank 等银行与提款机就在 Jalan Gaya 沿线及街旁，老城区与附近商场也有合法换钱所，换之前花一两分钟比一下汇率。' },
+    { q: '夜市在哪里、几点开始？', a: 'Api-Api 夜市离加雅街不远，通常傍晚开始、入夜后最热闹；周日市集收摊之后顺路过去刚刚好。' },
+    { q: '下雨的话还能逛吗？', a: '加雅街两侧的五脚基骑楼可以遮雨，咖啡店也能随时躲一下；大雨时市集摊位会明显减少，建议随身带轻便雨具。' },
+    { q: '不是周日的话，加雅街值得去吗？', a: '值得。平日它是一条生活中的老街：咖啡店、老招牌、老店屋，抬头还能看见艾京生钟楼；只是市集本身只在周日开。' },
   ],
   sources: {
     intro: '非营利科普整理，信息来自公开资料与现场走访。',
@@ -175,5 +208,9 @@ export const zh: Translation = {
   },
   jsonLd: {
     touristType: '本地市民与旅行者，适合步行与摄影',
+    marketName: '加雅街周日市集（Pasar Minggu）',
+    marketDescription: '每周日 Jalan Gaya 封路变成露天市集：水果、植物、藤编手作、本地小吃与早餐摊位，07:00–12:00。',
+    nightMarketName: 'Api-Api 夜市',
+    nightMarketDescription: '离加雅街不远，傍晚开始营业至入夜，沙爹、海鲜、laksa 与本地甜品都在这里。',
   },
 };

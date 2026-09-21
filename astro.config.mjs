@@ -22,7 +22,26 @@ export default defineConfig({
   session: {
     driver: 'memory',
   },
-  integrations: [sitemap()],
+  integrations: [
+    sitemap({
+      serialize(item) {
+        const url = new URL(item.url);
+        const path = url.pathname;
+        const priority = path === '/ms/'
+          ? 1
+          : path === '/en/'
+            ? 0.9
+            : path === '/zh/'
+              ? 0.8
+              : path.endsWith('/sunday-market/')
+                ? 0.8
+                : path.endsWith('/things-to-do/')
+                  ? 0.7
+                  : 0.6;
+        return { ...item, priority, changefreq: 'weekly', lastmod: new Date() };
+      },
+    }),
+  ],
   vite: {
     plugins: [tailwindcss()],
   },

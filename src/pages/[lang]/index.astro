@@ -1,8 +1,11 @@
 ---
 import '../../styles/global.css';
+import SeoHead from '../../components/SeoHead.astro';
 import PageBody from '../../components/PageBody.astro';
 import { translations } from '../../i18n/translations';
 import { languages } from '../../i18n/ui';
+import { nextSunday, postalAddress as address, geo, place, TZ } from '../../lib/place';
+import { webp } from '../../lib/images';
 
 export function getStaticPaths() {
   return Object.keys(translations).map((lang) => ({ params: { lang } }));
@@ -10,41 +13,132 @@ export function getStaticPaths() {
 
 const { lang } = Astro.params as { lang: string };
 const t = translations[lang];
+const locales = Object.keys(translations);
 const currentPath = Astro.url.pathname;
 const canonical = Astro.site ? new URL(currentPath, Astro.site).toString() : undefined;
-const ogImage = Astro.site ? new URL('/gallery/gaya-street-market-3.jpg', Astro.site).toString() : '/gallery/gaya-street-market-3.jpg';
-const alternateUrls = Object.keys(translations).map((l) => ({
-  code: l,
-  htmlLang: languages[l].htmlLang,
-  href: Astro.site ? new URL(`/${l}/`, Astro.site).toString() : `/${l}/`,
-}));
+const siteUrl = Astro.site ? Astro.site.toString() : undefined;
+
+const OG_IMAGE = '/og-cover.jpg';
+const ogImage = Astro.site ? new URL(OG_IMAGE, Astro.site).toString() : OG_IMAGE;
+const heroImage = webp('/gallery/gaya-street-market-3.jpg', 1400);
+
 const jsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
     {
+      '@type': 'WebSite',
+      '@id': `${siteUrl}#website`,
+      url: siteUrl,
+      name: 'Gaya Street Field Notes',
+      inLanguage: locales.map((l) => languages[l].htmlLang),
+    },
+    {
+      '@type': 'WebPage',
+      '@id': `${canonical}#webpage`,
+      url: canonical,
+      name: t.meta.title,
+      description: t.meta.description,
+      inLanguage: t.htmlLang,
+      isPartOf: { '@id': `${siteUrl}#website` },
+      primaryImageOfPage: ogImage,
+    },
+    {
       '@type': 'TouristAttraction',
+      '@id': `${canonical}#attraction`,
       name: 'Gaya Street Market',
-      alternateName: 'Pasar Minggu Gaya Street',
+      alternateName: ['Pasar Minggu Gaya Street', 'Gaya Street Sunday Market', 'Jalan Gaya'],
       description: t.meta.description,
       url: canonical,
       image: ogImage,
-      address: { '@type': 'PostalAddress', streetAddress: 'Jalan Gaya', addressLocality: 'Kota Kinabalu', postalCode: '88000', addressRegion: 'Sabah', addressCountry: 'MY' },
-      geo: { '@type': 'GeoCoordinates', latitude: 5.9821841, longitude: 116.0736846 },
-      openingHoursSpecification: {
-        '@type': 'OpeningHoursSpecification',
-        dayOfWeek: 'Sunday',
-        opens: '07:00',
-        closes: '12:00',
-      },
+      address,
+      geo,
+      hasMap: place.hasMap,
+      isAccessibleForFree: true,
+      publicAccess: true,
+      openingHoursSpecification: [
+        { '@type': 'OpeningHoursSpecification', dayOfWeek: 'Sunday', opens: '07:00', closes: '12:00' },
+      ],
       touristType: t.jsonLd.touristType,
-      aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.4', reviewCount: '8967' },
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: '4.4',
+        reviewCount: '8967',
+        bestRating: '5',
+        worstRating: '1',
+      },
       sameAs: [
         'https://www.sabahtourism.com/',
         'https://en.wikipedia.org/wiki/Kota_Kinabalu',
       ],
     },
     {
+      '@type': 'Event',
+      '@id': `${canonical}#sunday-market`,
+      name: t.jsonLd.marketName,
+      description: t.jsonLd.marketDescription,
+      url: `${canonical}#market`,
+      image: ogImage,
+      inLanguage: t.htmlLang,
+      startDate: `${nextSunday}T07:00${TZ}`,
+      endDate: `${nextSunday}T12:00${TZ}`,
+      eventStatus: 'https://schema.org/EventScheduled',
+      eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+      isAccessibleForFree: true,
+      location: { '@type': 'Place', name: 'Gaya Street (Jalan Gaya)', address, geo, hasMap: place.hasMap },
+      eventSchedule: {
+        '@type': 'Schedule',
+        repeatFrequency: 'P1W',
+        byDay: 'https://schema.org/Sunday',
+        startTime: '07:00',
+        endTime: '12:00',
+        scheduleTimezone: 'Asia/Kuala_Lumpur',
+      },
+    },
+    {
+      '@type': 'Event',
+      '@id': `${canonical}#night-market`,
+      name: t.jsonLd.nightMarketName,
+      description: t.jsonLd.nightMarketDescription,
+      url: `${canonical}#nearby`,
+      image: ogImage,
+      inLanguage: t.htmlLang,
+      startDate: `${nextSunday}T17:00${TZ}`,
+      endDate: `${nextSunday}T22:00${TZ}`,
+      eventStatus: 'https://schema.org/EventScheduled',
+      eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+      isAccessibleForFree: true,
+      location: {
+        '@type': 'Place',
+        name: 'Api-Api Night Market',
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: 'Api-Api, off Jalan Gaya',
+          addressLocality: 'Kota Kinabalu',
+          postalCode: '88000',
+          addressRegion: 'Sabah',
+          addressCountry: 'MY',
+        },
+      },
+      eventSchedule: {
+        '@type': 'Schedule',
+        repeatFrequency: 'P1W',
+        byDay: [
+          'https://schema.org/Monday',
+          'https://schema.org/Tuesday',
+          'https://schema.org/Wednesday',
+          'https://schema.org/Thursday',
+          'https://schema.org/Friday',
+          'https://schema.org/Saturday',
+          'https://schema.org/Sunday',
+        ],
+        startTime: '17:00',
+        endTime: '22:00',
+        scheduleTimezone: 'Asia/Kuala_Lumpur',
+      },
+    },
+    {
       '@type': 'FAQPage',
+      '@id': `${canonical}#faq`,
       mainEntity: t.faq.map((f) => ({
         '@type': 'Question',
         name: f.q,
@@ -57,32 +151,14 @@ const jsonLd = {
 <!doctype html>
 <html lang={t.htmlLang}>
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="description" content={t.meta.description} />
-    <title>{t.meta.title}</title>
-    {canonical && <link rel="canonical" href={canonical} />}
-    <link rel="alternate" hreflang="x-default" href={alternateUrls.find((a) => a.code === 'ms')?.href} />
-    {alternateUrls.map((a) => (
-      <link rel="alternate" hreflang={a.htmlLang} href={a.href} />
-    ))}
-    {canonical && <meta property="og:url" content={canonical} />}
-    <meta property="og:title" content={t.meta.title} />
-    <meta property="og:description" content={t.meta.description} />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content={ogImage} />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" />
-    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-YJTNXGWZNY"></script>
-    <script is:inline>
-      // @ts-nocheck
-      window['dataLayer'] = window['dataLayer'] || [];
-      window['gtag'] = window['gtag'] || function(){ window['dataLayer'].push(arguments); };
-      window['gtag']('js', new Date()); window['gtag']('config', 'G-YJTNXGWZNY');
-    </script>
-    <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    <SeoHead
+      lang={lang}
+      title={t.meta.title}
+      description={t.meta.description}
+      path={currentPath}
+      jsonLd={jsonLd}
+      heroImage={heroImage}
+    />
   </head>
   <body>
     <PageBody t={t} lang={lang} />

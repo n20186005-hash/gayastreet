@@ -1,6 +1,8 @@
 ---
 import type { Translation } from '../i18n/translations';
+import { guides, guideSlugs } from '../data/guides';
 import LanguageSwitcher from './LanguageSwitcher.astro';
+import { webp, srcset } from '../lib/images';
 
 interface Props {
   t: Translation;
@@ -26,7 +28,7 @@ const image = {
 
 <main id="top">
   <section class="hero">
-    <img class="hero-image" src={image.hero} alt={t.gallery.items[2].cap} />
+    <img class="hero-image" src={webp(image.hero, 1400)} srcset={srcset(image.hero)} sizes="100vw" alt={t.gallery.items[2].cap} fetchpriority="high" decoding="async" />
     <div class="hero-shade"></div>
     <div class="hero-copy"><p class="eyebrow light">{t.hero.eyebrow}</p><h1>{t.hero.h1[0]}<br /><i>{t.hero.h1[1]}</i></h1><p class="hero-lede">{t.hero.lede}</p><a class="button button-yellow" href="#story">{t.hero.cta} <span>↓</span></a></div>
     <div class="hero-note"><span>{t.hero.noteLabel}</span><strong>{t.hero.noteName}</strong><small>{t.hero.noteSub}</small></div>
@@ -40,25 +42,29 @@ const image = {
 
   <section class="story-band wrap"><div class="section-kicker"><span>04</span><span>STORIES FROM THE STREET</span></div><div class="story-grid">{t.stories.map((s) => (<article class="story-card"><span class="story-no">{s.no}</span><span class="story-tag">{s.tag}</span><h3>{s.title}</h3><p>{s.text}</p><em class="hand-note">{s.note}</em></article>))}</div></section>
 
-  <section class="market-section wrap" id="market"><div class="photo-frame"><img src={image.market} alt={t.gallery.items[1].cap} /><span class="photo-caption">SUNDAY MARKET / 07:00—12:00</span></div><div class="market-copy"><div class="section-kicker"><span>05</span><span>{t.market.eyebrow}</span></div><h2>{t.market.heading[0]}<br /><i>{t.market.heading[1]}</i></h2><p>{t.market.body}</p><div class="mini-facts">{t.market.facts.map((f) => (<div><strong>{f.value}</strong><span>{f.label}</span></div>))}</div></div></section>
+  <section class="market-section wrap" id="market"><div class="photo-frame"><img src={webp(image.market, 1400)} srcset={srcset(image.market)} sizes="(min-width:900px) 50vw, 100vw" alt={t.gallery.items[1].cap} loading="lazy" decoding="async" /><span class="photo-caption">SUNDAY MARKET / 07:00—12:00</span></div><div class="market-copy"><div class="section-kicker"><span>05</span><span>{t.market.eyebrow}</span></div><h2>{t.market.heading[0]}<br /><i>{t.market.heading[1]}</i></h2><p>{t.market.body}</p><div class="mini-facts">{t.market.facts.map((f) => (<div><strong>{f.value}</strong><span>{f.label}</span></div>))}</div></div></section>
 
-  <section class="heritage-section wrap"><div class="heritage-copy"><div class="section-kicker"><span>06</span><span>{t.heritage.eyebrow}</span></div><h2>{t.heritage.heading[0]}<br /><i>{t.heritage.heading[1]}</i></h2><p>{t.heritage.body}</p><p class="hand-note">{t.heritage.note}</p></div><div class="heritage-photo"><img src={image.heritage} alt={t.gallery.items[0].cap} /></div></section>
+  <section class="heritage-section wrap"><div class="heritage-copy"><div class="section-kicker"><span>06</span><span>{t.heritage.eyebrow}</span></div><h2>{t.heritage.heading[0]}<br /><i>{t.heritage.heading[1]}</i></h2><p>{t.heritage.body}</p><p class="hand-note">{t.heritage.note}</p></div><div class="heritage-photo"><img src={webp(image.heritage, 1400)} srcset={srcset(image.heritage)} sizes="(min-width:900px) 50vw, 100vw" alt={t.gallery.items[0].cap} loading="lazy" decoding="async" /></div></section>
 
   <section class="walk-band" id="walk"><div class="wrap"><div class="section-kicker light"><span>07</span><span>{t.walk.eyebrow}</span></div><h2>{t.walk.heading[0]}<br /><i>{t.walk.heading[1]}</i></h2><div class="walk-route">{t.walk.items.map((w) => (<div class="walk-step"><b>{w.step}</b><span>{w.title}<small>{w.note}</small></span></div>))}</div></div></section>
 
   <section class="practical-band" id="practical"><div class="wrap"><div class="section-kicker light"><span>08</span><span>{t.practical.eyebrow}</span></div><h2>{t.practical.heading[0]}<br /><i>{t.practical.heading[1]}</i></h2><div class="practical-grid">{t.practical.cards.map((c) => (<article><span class="card-index">{c.index}</span><h3>{c.title}</h3>{c.paras.map((p) => (<p>{p}</p>))}{c.tip && <p class="tip">{c.tip}</p>}</article>))}</div></div></section>
 
-  <section class="food-section wrap" id="nearby"><div class="section-kicker"><span>09</span><span>{t.food.eyebrow}</span></div><div class="food-grid"><div><h2>{t.food.heading[0]}<br /><i>{t.food.heading[1]}</i></h2><p>{t.food.body}</p><a class="text-link" href="#map">{t.food.link}</a></div><img src={image.food} alt={t.gallery.items[3].cap} /></div><div class="food-list">{t.food.items.map((f) => (<div><b>{f.no}</b><span>{f.name}</span><small>{f.note}</small></div>))}</div></section>
+  <section class="food-section wrap" id="nearby"><div class="section-kicker"><span>09</span><span>{t.food.eyebrow}</span></div><div class="food-grid"><div><h2>{t.food.heading[0]}<br /><i>{t.food.heading[1]}</i></h2><p>{t.food.body}</p><a class="text-link" href="#map">{t.food.link}</a></div><img src={webp(image.food, 1400)} srcset={srcset(image.food)} sizes="(min-width:900px) 50vw, 100vw" alt={t.gallery.items[3].cap} loading="lazy" decoding="async" /></div><div class="food-list">{t.food.items.map((f) => (<div><b>{f.no}</b><span>{f.name}</span><small>{f.note}</small></div>))}</div></section>
 
   <section class="nearby-section"><div class="wrap"><div class="section-kicker light"><span>10</span><span>{t.nearby.eyebrow}</span></div><h2>{t.nearby.heading[0]}<br /><i>{t.nearby.heading[1]}</i></h2><div class="nearby-grid">{t.nearby.items.map((n) => (<a href="#map"><span>{n.no}</span><strong>{n.name}</strong><small>{n.note}</small></a>))}</div></div></section>
 
-  <section class="gallery-section wrap" id="gallery"><div class="section-kicker"><span>11</span><span>GALLERY</span></div><div class="gallery-grid">{t.gallery.items.map((g) => (<button type="button" data-src={g.src} data-cap={g.cap} aria-label={`${t.gallery.lightbox.ariaLabel}：${g.cap}`}><img src={g.src} alt={g.cap} loading="lazy" /></button>))}</div><p class="gallery-note">{t.gallery.note}</p></section>
+  <section class="amenities-section wrap" id="amenities"><div class="section-kicker"><span>11</span><span>{t.amenities.eyebrow}</span></div><h2>{t.amenities.heading[0]}<br /><i>{t.amenities.heading[1]}</i></h2><p class="amenities-body">{t.amenities.body}</p><div class="food-list">{t.amenities.items.map((a) => (<div><b>{a.no}</b><span>{a.name}</span><small>{a.note}</small></div>))}</div></section>
 
-  <section class="map-section wrap" id="map"><div class="map-copy"><div class="section-kicker"><span>12</span><span>{t.map.eyebrow}</span></div><h2>{t.map.heading[0]}<br /><i>{t.map.heading[1]}</i></h2><p>{t.map.body}</p><a class="button button-ink" href={mapsUrl} target="_blank" rel="noreferrer">{t.map.cta}</a></div><div class="map-frame"><iframe src={mapUrl} title="Gaya Street Kota Kinabalu map" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe></div></section>
+  <section class="nearby-section" id="guides"><div class="wrap"><div class="section-kicker light"><span>12</span><span>{t.guides.eyebrow}</span></div><h2>{t.guides.heading[0]}<br /><i>{t.guides.heading[1]}</i></h2><p class="guides-intro">{t.guides.intro}</p><div class="nearby-grid">{guideSlugs.map((slug) => (<a href={`/${lang}/${slug}/`}><span>{guides[slug][lang].card.label}</span><strong>{guides[slug][lang].card.note}</strong></a>))}</div></div></section>
 
-  <section class="faq-section wrap"><div class="section-kicker"><span>13</span><span>QUICK ANSWERS</span></div><h2>{t.faqHeading[0]}<br /><i>{t.faqHeading[1]}</i></h2><div class="faq-list">{t.faq.map((f) => (<details><summary>{f.q}<span>+</span></summary><p>{f.a}</p></details>))}</div></section>
+  <section class="gallery-section wrap" id="gallery"><div class="section-kicker"><span>13</span><span>GALLERY</span></div><div class="gallery-grid">{t.gallery.items.map((g) => (<button type="button" data-src={webp(g.src, 1400)} data-cap={g.cap} aria-label={`${t.gallery.lightbox.ariaLabel}：${g.cap}`}><img src={webp(g.src, 600)} srcset={srcset(g.src)} sizes="(min-width:900px) 25vw, 45vw" alt={g.cap} loading="lazy" decoding="async" /></button>))}</div><p class="gallery-note">{t.gallery.note}</p></section>
 
-  <section class="sources-section wrap"><div class="section-kicker"><span>14</span><span>SOURCES</span></div><div class="sources-grid"><div class="sources-intro"><p class="eyebrow">{t.sources.intro}</p><h2>{t.sources.heading[0]}<br /><i>{t.sources.heading[1]}</i></h2></div><div class="sources-list">{t.sources.items.map((s) => (<a href={s.href} target="_blank" rel="noreferrer"><span>{s.label}</span><small>{s.tag} ↗</small></a>))}</div></div><p class="sources-note">{t.sources.note}</p></section>
+  <section class="map-section wrap" id="map"><div class="map-copy"><div class="section-kicker"><span>14</span><span>{t.map.eyebrow}</span></div><h2>{t.map.heading[0]}<br /><i>{t.map.heading[1]}</i></h2><p>{t.map.body}</p><a class="button button-ink" href={mapsUrl} target="_blank" rel="noreferrer">{t.map.cta}</a></div><div class="map-frame"><iframe src={mapUrl} title="Gaya Street Kota Kinabalu map" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe></div></section>
+
+  <section class="faq-section wrap" id="faq"><div class="section-kicker"><span>15</span><span>QUICK ANSWERS</span></div><h2>{t.faqHeading[0]}<br /><i>{t.faqHeading[1]}</i></h2><div class="faq-list">{t.faq.map((f) => (<details><summary>{f.q}<span>+</span></summary><p>{f.a}</p></details>))}</div></section>
+
+  <section class="sources-section wrap"><div class="section-kicker"><span>16</span><span>SOURCES</span></div><div class="sources-grid"><div class="sources-intro"><p class="eyebrow">{t.sources.intro}</p><h2>{t.sources.heading[0]}<br /><i>{t.sources.heading[1]}</i></h2></div><div class="sources-list">{t.sources.items.map((s) => (<a href={s.href} target="_blank" rel="noreferrer"><span>{s.label}</span><small>{s.tag} ↗</small></a>))}</div></div><p class="sources-note">{t.sources.note}</p></section>
 </main>
 
 <footer><div class="wrap footer-inner"><a class="brand" href="#top" aria-label={t.brandAria}><img src={image.mark} alt={t.brandAria} width="42" height="42" /><span>GAYA STREET<br /><em>FIELD NOTES</em></span></a><p>{t.footer.tagline}<br /><small>{t.footer.small}</small></p><span class="footer-coord">5.9821° N<br />116.0736° E</span></div></footer>

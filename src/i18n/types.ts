@@ -61,6 +61,12 @@ export interface Translation {
     heading: [string, string];
     items: Array<{ no: string; name: string; note: string }>;
   };
+  amenities: {
+    eyebrow: string;
+    heading: [string, string];
+    body: string;
+    items: Array<{ no: string; name: string; note: string }>;
+  };
   gallery: {
     items: Array<{ src: string; cap: string }>;
     note: string;
@@ -74,6 +80,17 @@ export interface Translation {
   };
   faqHeading: [string, string];
   faq: Array<{ q: string; a: string }>;
+  /** "More guides" band shown on the home page and on every topic page */
+  guides: { eyebrow: string; heading: [string, string]; intro: string };
+  /** Shared UI strings for the topic pages (/[lang]/[slug]/) */
+  guide: {
+    back: string;
+    crumbHome: string;
+    quickFacts: string;
+    sectionLabel: string;
+    faqKicker: string;
+    faqHeading: [string, string];
+  };
   sources: {
     intro: string;
     heading: [string, string];
@@ -86,5 +103,9 @@ export interface Translation {
   };
   jsonLd: {
     touristType: string;
+    marketName: string;
+    marketDescription: string;
+    nightMarketName: string;
+    nightMarketDescription: string;
   };
 }

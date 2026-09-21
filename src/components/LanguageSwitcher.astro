@@ -3,14 +3,16 @@ import { languages } from '../i18n/ui';
 
 interface Props {
   current: string;
+  /** Topic-page slug; when set the switcher stays on the same page. */
+  slug?: string;
 }
 
-const { current } = Astro.props;
+const { current, slug } = Astro.props;
 
 const items = Object.entries(languages).map(([code, meta]) => ({
   code,
   label: meta.label,
-  href: `/${code}/`,
+  href: slug ? `/${code}/${slug}/` : `/${code}/`,
 }));
 ---
 <span class="lang-switch" role="list" aria-label="Language / 语言 / Bahasa">

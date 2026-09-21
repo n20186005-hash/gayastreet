@@ -3,8 +3,8 @@ import type { Translation } from './types';
 export const en: Translation = {
   htmlLang: 'en',
   meta: {
-    title: 'Gaya Street Kota Kinabalu — A Field Guide to the City’s Most Lived-in Street',
-    description: 'A travel field note to Gaya Street at the pace of local life: the Sunday market, old shophouses, breakfast, transport, and nearby walking routes.',
+    title: 'Gaya Street Sunday Market Kota Kinabalu — Hours, Food & Map',
+    description: 'Gaya Street Sunday market, 07:00–12:00: what to eat and buy, where to park, the Api-Api night market, nearby things to do and a walkable old-town map. Free entry.',
   },
   nav: { story: 'The Vibe', history: 'History', market: 'Market', walk: 'Walk', map: 'Map' },
   brandAria: 'Gaya Street Field Notes · back to top',
@@ -30,7 +30,7 @@ export const en: Translation = {
     { label: 'Entry', value: 'Free', note: 'Stall purchases extra' },
     { label: 'Best time', value: 'Early morning', note: 'Cooler, fullest market' },
     { label: 'Stay', value: '2–3 h', note: 'Half a day with an old-town walk' },
-    { label: 'Rating', value: '4.4 / 8,967', note: 'Based on visitor reviews' },
+    { label: 'Rating', value: '4.4 / 8,967', note: 'Google Maps reviews · synced Sept 2026' },
   ],
   history: {
     eyebrow: 'One street, seven turns.',
@@ -122,12 +122,28 @@ export const en: Translation = {
     ],
   },
   nearby: {
-    eyebrow: 'NEARBY STOPS',
-    heading: ['Spend half a day', 'on the nearby sights.'],
+    eyebrow: 'THINGS TO DO NEARBY',
+    heading: ['Six things to do near', 'Gaya Street — half a day.'],
     items: [
-      { no: '01', name: 'Gaya Street Market', note: 'The street itself is the first stop' },
-      { no: '02', name: 'Padang Merdeka', note: 'Good for continuing the old-town stroll' },
-      { no: '03', name: 'Signal Hill', note: 'To see the city and the sea together, go higher' },
+      { no: '01', name: 'Gaya Street Sunday Market', note: 'Start here · 07:00–12:00, the street itself is the market' },
+      { no: '02', name: 'Padang Merdeka & the old town', note: 'A flat, easy walk just south of the stalls' },
+      { no: '03', name: 'Signal Hill & Atkinson Clock Tower', note: 'Walk up ten minutes for city and sea together' },
+      { no: '04', name: 'Api-Api Night Market', note: 'Come back after dark for satay, seafood and laksa' },
+      { no: '05', name: 'Kota Kinabalu Esplanade', note: 'About 10 minutes on foot · waterfront sunset' },
+      { no: '06', name: 'Shophouse & gate-arch photo walk', note: 'Five-foot-way arcades, faded signboards, morning light' },
+    ],
+  },
+  amenities: {
+    eyebrow: 'PRACTICAL STUFF',
+    heading: ['Banks, ATMs and other', 'useful things on the block.'],
+    body: 'Almost everything you need on the day sits inside the old town: banks and ATMs along Jalan Gaya, licensed money changers nearby, pharmacies, convenience stores and places to stay all within a few minutes’ walk.',
+    items: [
+      { no: '01', name: 'Banks & ATMs', note: 'Maybank and other banks sit on and just off Jalan Gaya — ATMs are the simplest way to draw ringgit' },
+      { no: '02', name: 'Money changers', note: 'Licensed changers cluster around the old town and nearby malls; compare rates before you change' },
+      { no: '03', name: 'Pharmacies & mini-marts', note: 'A few minutes’ walk from the street for water, sunscreen and basics' },
+      { no: '04', name: 'Toilets & water', note: 'Public toilets are limited — use a kopitiam or nearby mall, and carry your own water' },
+      { no: '05', name: 'Places to stay', note: 'Old-town guesthouses and city hotels are all walkable from the market' },
+      { no: '06', name: 'Wi-Fi & connectivity', note: 'Most kopitiams offer Wi-Fi; a local SIM or eSIM from the airport is the easiest backup' },
     ],
   },
   gallery: {
@@ -151,6 +167,19 @@ export const en: Translation = {
     cta: 'Open Google Maps ↗',
   },
   faqHeading: ['Before you go,', 'a few quick answers.'],
+  guides: {
+    eyebrow: 'MORE FROM THE STREET',
+    heading: ['Keep walking:', 'three guides for one street.'],
+    intro: 'Each guide answers one question visitors actually search for — opening hours, what to eat, and what to do nearby.',
+  },
+  guide: {
+    back: 'Street guide',
+    crumbHome: 'Gaya Street',
+    quickFacts: 'QUICK FACTS',
+    sectionLabel: 'IN THIS GUIDE',
+    faqKicker: 'QUICK ANSWERS',
+    faqHeading: ['Still deciding?', 'a few quick answers.'],
+  },
   faq: [
     { q: 'When is the best time to visit the Gaya Street Sunday market?', a: 'Arrive between 7 and 10 am on Sunday — the temperature is comfortable and the choice of stalls and breakfast is fullest.' },
     { q: 'What time does the Sunday market close?', a: 'The market usually winds down around noon, with stallholders starting to pack up from 11:30. To see it in full, come early.' },
@@ -158,6 +187,10 @@ export const en: Translation = {
     { q: 'How do I get from Kota Kinabalu airport to Gaya Street?', a: 'The airport is about 8 km from the city centre — take a taxi, ride-hailing car or airport bus, then walk into Jalan Gaya.' },
     { q: 'Do stalls take cash or cards?', a: 'Stalls are mostly cash-based — bring small notes in ringgit (RM). Some vendors accept QR payments; ask before buying.' },
     { q: 'Is there an entry fee?', a: 'The street and Sunday market are usually free to enter; individual stall purchases and nearby attractions are charged separately.' },
+    { q: 'Are there ATMs or money changers near Gaya Street?', a: 'Yes. Maybank and other banks with ATMs sit on and just off Jalan Gaya, and licensed money changers are found around the old town and in nearby malls — worth comparing rates for a minute or two.' },
+    { q: 'Where is the night market, and when does it start?', a: 'The Api-Api night market is a short walk from Gaya Street and generally gets going in the late afternoon and runs into the evening — a natural second stop once the Sunday market has packed up.' },
+    { q: 'What happens if it rains?', a: 'The five-foot-way arcades along Gaya Street give good cover and kopitiams make easy shelter. The market does thin out in heavy rain, so keep a light umbrella handy.' },
+    { q: 'Is Gaya Street still worth visiting on a weekday?', a: 'Yes — on weekdays it is a working old-town street of kopitiams, faded signboards and shophouses, with the Atkinson Clock Tower in view. The market itself, though, is a Sunday thing.' },
   ],
   sources: {
     intro: 'A non-profit educational compilation from public sources and on-site visits.',
@@ -175,5 +208,9 @@ export const en: Translation = {
   },
   jsonLd: {
     touristType: 'Locals and travellers; suited to walking and photography',
+    marketName: 'Gaya Street Sunday Market (Pasar Minggu)',
+    marketDescription: 'Every Sunday, Jalan Gaya closes to traffic and becomes an open-air market: fruit, plants, rattan and handicrafts, local snacks and breakfast stalls, 07:00–12:00.',
+    nightMarketName: 'Api-Api Night Market',
+    nightMarketDescription: 'A short walk from Gaya Street, the Api-Api night market serves satay, seafood, laksa and local desserts from late afternoon into the evening.',
   },
 };
