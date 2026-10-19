@@ -9,9 +9,9 @@ export interface LanguageMeta {
 }
 
 export const languages: Record<string, LanguageMeta> = {
-  zh: { label: 'ZH', htmlLang: 'zh-CN', name: '中文', hreflangs: ['zh-Hans', 'zh-Hans-MY', 'zh'], ogLocale: 'zh_CN' },
-  en: { label: 'EN', htmlLang: 'en', name: 'English', hreflangs: ['en-MY', 'en-GB', 'en'], ogLocale: 'en_GB' },
-  ms: { label: 'MS', htmlLang: 'ms', name: 'Bahasa Melayu', hreflangs: ['ms-MY', 'ms'], ogLocale: 'ms_MY' },
+  zh: { label: 'ZH', htmlLang: 'zh-CN', name: '中文', hreflangs: ['zh-Hans'], ogLocale: 'zh_CN' },
+  en: { label: 'EN', htmlLang: 'en', name: 'English', hreflangs: ['en'], ogLocale: 'en_GB' },
+  ms: { label: 'MS', htmlLang: 'ms', name: 'Bahasa Melayu', hreflangs: ['ms'], ogLocale: 'ms_MY' },
 };
 
 export const defaultLang = 'ms';
