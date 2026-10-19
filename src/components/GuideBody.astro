@@ -2,6 +2,7 @@
 import type { Translation } from '../i18n/translations';
 import type { Guide } from '../data/guides';
 import { guides, guideSlugs } from '../data/guides';
+import MarketChecks from './MarketChecks.astro';
 import LanguageSwitcher from './LanguageSwitcher.astro';
 import { webp, srcset } from '../lib/images';
 import { place } from '../lib/place';
@@ -36,6 +37,8 @@ const pad = (n: number) => String(n).padStart(2, '0');
       <p class="hero-lede">{guide.hero.lede}</p>
     </div>
   </section>
+
+  <MarketChecks lang={lang} />
 
   <section class="glance-band wrap">
     <div class="section-kicker"><span>01</span><span>{t.guide.quickFacts}</span></div>
@@ -100,4 +103,4 @@ const pad = (n: number) => String(n).padStart(2, '0');
   </section>
 </main>
 
-<footer><div class="wrap footer-inner"><a class="brand" href="#top" aria-label={t.brandAria}><img src="/gaya-mark.svg" alt={t.brandAria} width="42" height="42" /><span>GAYA STREET<br /><em>FIELD NOTES</em></span></a><p>{t.footer.tagline}<br /><small>{t.footer.small}</small></p><span class="footer-coord">5.9821° N<br />116.0736° E</span></div></footer>
+<footer><div class="wrap footer-inner"><a class="brand" href="#top" aria-label={t.brandAria}><img src="/gaya-mark.svg" alt={t.brandAria} width="42" height="42" /><span>GAYA STREET<br /><em>FIELD NOTES</em></span></a><p>{t.footer.tagline}<br /><small>{t.footer.small}</small></p><span class="footer-coord">5.9846° N<br />116.0765° E</span></div></footer>

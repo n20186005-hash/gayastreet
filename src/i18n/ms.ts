@@ -3,16 +3,19 @@ import type { Translation } from './types';
 export const ms: Translation = {
   htmlLang: 'ms',
   meta: {
-    title: 'Pasar Ahad Gaya Street Kota Kinabalu — Waktu, Makanan & Peta',
-    description: 'Panduan pasar Ahad Gaya Street 07:00–12:00: sarapan wajib, gerai kraf, parkir & pengangkutan, pasar malam Api-Api dan perkara menarik berhampiran. Masuk percuma.',
-  },
+  "title": "Gaya Street Kota Kinabalu: Pasar Ahad & Api-Api Malam",
+  "description": "Rancang Gaya Street: pasar pagi Ahad, Api-Api malam Jumaat/Sabtu, perbezaan waktu sumber, makanan, parkir dan arah perjalanan di Kota Kinabalu."
+},
   nav: { story: 'Suasana', history: 'Sejarah', market: 'Pasar', walk: 'Laluan', map: 'Peta' },
   brandAria: 'Nota Lapangan Gaya Street · kembali ke atas',
   hero: {
-    eyebrow: '05°58′N / 116°04′E · SABAH, MALAYSIA',
-    h1: ['Melangkah ke', 'Jalan Gaya'],
-    lede: 'Di Kota Kinabalu, Ahad bermula dengan secawan kopi dan sebuah jalan yang perlahan-lahan menjadi hangat.',
-    cta: 'Mula berjalan',
+    eyebrow: "Jalan Gaya, Kota Kinabalu, Sabah",
+    h1: [
+  "Gaya Street",
+  "Kota Kinabalu"
+],
+    lede: "Rancang Gaya Street: pasar pagi Ahad, Api-Api malam Jumaat/Sabtu, perbezaan waktu sumber, makanan, parkir dan arah perjalanan di Kota Kinabalu.",
+    cta: "Bandingkan hari pasar",
     noteLabel: 'FIELD NOTE 01',
     noteName: 'Jalan Gaya',
     noteSub: 'Sebuah jalan-jalan bandar yang bermula dengan sarapan',
@@ -26,40 +29,82 @@ export const ms: Translation = {
   },
   glance: [
     { label: 'Alamat', value: 'Jalan Gaya, 88000', note: 'Pekan lama Kota Kinabalu · Sabah, Malaysia' },
-    { label: 'Pasar Ahad', value: 'Ahad 07:00–12:00', note: 'Jalan ditutup menjadi pasar pejalan kaki', focus: true },
+    {
+  "label": "Hari pasar",
+  "value": "Pasar pagi Ahad",
+  "note": "Semak waktu",
+  "focus": true
+},
     { label: 'Tiket masuk', value: 'Percuma', note: 'Pembelian di gerai berasingan' },
-    { label: 'Masa terbaik', value: 'Awal pagi', note: 'Lebih sejuk, gerai paling lengkap' },
+    { label: 'Masa terbaik', value: 'Awal pagi', note: "Anggaran perancangan; tambah masa untuk makan atau membeli." },
     { label: 'Tempoh lawatan', value: '2–3 jam', note: 'Setengah hari jika ditambah berjalan di pekan lama' },
-    { label: 'Penilaian', value: '4.4 / 8,967', note: 'Ulasan Google Maps · disegerak Sept 2026' },
+    {
+  "label": "Google Maps",
+  "value": "4.4 / 9,075",
+  "note": "Disemak 2026-10-19"
+},
   ],
   history: {
-    eyebrow: 'Satu jalan, tujuh giliran.',
-    heading: ['Dari menara jam ke pasar,', 'jalan ini terus menukar namanya.'],
-    body: 'Gaya Street lebih tua daripada nama Kota Kinabalu. Ia dibina semula selepas pengeboman, membesar melalui pertukaran nama, dan akhirnya memberikan hari Ahadnya kepada pasar. Susuri garis masa ini dan anda sedang berjalan melalui sejarah moden bandar ini.',
+    eyebrow: "Sumber & maklumat disemak",
+    heading: [
+  "Dua tanda tempatan,",
+  "dengan sumber diterbitkan."
+],
+    body: "Rujuk sumber pelancongan untuk latar belakang; panduan ini tidak mendakwa temu bual atau laporan lapangan.",
     timeline: [
-      { year: 'Asal nama · mengikut cerita', title: 'Dua kisah di sebalik nama “Gaya”', text: 'Satu versi mengaitkannya dengan Teluk Gaya dan Pulau Gaya di selatan jalan; satu lagi kisah popular mengaitkannya dengan pegawai kolonial Borneo Utara British. Kedua-dua versi masih diceritakan; catatan sejarah masih terbuka.' },
-      { year: '1905', title: 'Menara Jam Atkinson siap dibina', text: 'Dibina untuk memperingati Francis George Atkinson, gabenor pertama Borneo Utara British, ia berdiri di Signal Hill — salah satu bangunan sebelum perang yang terselamat daripada pengeboman. Lihat ke atas dari Gaya Street dan anda dapat melihatnya.' },
-      { year: '1931', title: 'Nama Jesselton', text: 'Bandar pelabuhan yang baru tumbuh ini mengambil namanya daripada Charles Jessel, timbalan pengerusi Syarikat Berpiagam Borneo Utara British. Pekan lama di sekitar Gaya Street mula berkembang.' },
-      { year: '1943–1945', title: 'Bandar dalam peperangan', text: 'Semasa Perang Dunia II, pengeboman Sekutu meratakan sebahagian besar Jesselton, memusnahkan banyak bangunan sebelum perang.' },
-      { year: '1950-an', title: 'Pembinaan semula dan kaki lima', text: 'Semasa bandar dibina semula, kebanyakan rumah kedai di sepanjang Gaya Street adalah dari zaman ini. Kaki lima — bahasa seni bina yang ditinggalkan oleh perancangan zaman kolonial — menghubungkan kedai, pejalan kaki dan cuaca Kota Kinabalu dalam satu gerak yang berterusan.' },
-      { year: '1968', title: 'Ditukar nama kepada Kota Kinabalu', text: 'Jesselton menjadi Kota Kinabalu, dan Gaya Street terus menjadi tulang belakang kehidupan pekan lama.' },
-      { year: '1970-an–80-an', title: 'Pasar Ahad mula terbentuk', text: 'Pasar Minggu berkembang daripada peniaga tepi jalan kepada pasar terbuka mingguan besar yang menutup jalan setiap Ahad — ritual Ahad Kota Kinabalu yang berterusan sehingga hari ini.' },
-    ],
+  {
+    "year": "1905",
+    "title": "Menara Jam Atkinson",
+    "text": "Dibina untuk memperingati Francis George Atkinson, pegawai daerah pertama Jesselton, bukan gabenor pertama Borneo Utara British."
+  },
+  {
+    "year": "Disember 2018",
+    "title": "Api-Api Night Food Market",
+    "text": "Sabah Tourism Board menyatakan perasmian pada Disember 2018 serta operasi malam Jumaat dan Sabtu."
+  }
+],
   },
   stories: [
-    { no: 'I', tag: 'Kisah nama · belum disahkan', title: 'Dari mana asalnya “Gaya”?', text: 'Kisah paling umum mengaitkan nama ini dengan Teluk Gaya dan Pulau Gaya; sumber lain menghubungkannya dengan pegawai kolonial. Tanpa arkib yang kukuh, kedua-dua kisah diceritakan seiring — satu cara biasa penduduk tempatan membuka perbualan.', note: 'Belum disahkan; dua versi wujud bersama.' },
-    { no: 'II', tag: 'Gerbang jalan', title: '“Negara aman, rakyat sejahtera” di bawah gerbang', text: 'Gerbang gaya Cina berdiri di kedua-dua hujung Gaya Street, tulisannya mendoakan keamanan dan kemakmuran untuk kawasan ini. Ia menandakan pintu masuk komuniti Cina lama dan menjadi bingkai yang paling biasa dalam foto-foto pasar.', note: 'Penggemar foto suka berdiri di bawah gerbang.' },
-    { no: 'III', tag: 'Sejarah lisan rumah kedai', title: 'Tiga generasi di bawah kaki lima', text: 'Banyak rumah kedai yang dibina semula pada 1950-an masih diusahakan keluarga: kedai di bawah, rumah di atas. Peniaga lama berkata kaki lima ialah sebahagian daripada kedai dan juga sebahagian jalan — untuk membancuh teh, bermain catur, menunggu pelanggan.', note: 'Kisah lisan, untuk rujukan sahaja.' },
-  ],
+  {
+    "no": "1",
+    "tag": "Rancang ikut hari",
+    "title": "Bezakan dua pasar",
+    "text": "Pilih pagi Ahad atau malam Jumaat/Sabtu sebelum mengatur pengangkutan.",
+    "note": "Rancang lawatan"
+  },
+  {
+    "no": "2",
+    "tag": "Hormati kawasan",
+    "title": "Bergambar dengan sopan",
+    "text": "Minta izin untuk gambar dekat orang dan jangan halang pintu kedai.",
+    "note": "Rancang lawatan"
+  },
+  {
+    "no": "3",
+    "tag": "Semak cuaca",
+    "title": "Rancangan fleksibel",
+    "text": "Bawa air dan pelindung hujan; semak penutupan sementara.",
+    "note": "Rancang lawatan"
+  }
+],
   market: {
     eyebrow: 'THE SUNDAY WALK',
     heading: ['Cari aroma dahulu,', 'kemudian tentukan hala tuju.'],
     body: 'Mula di hujung jalan — tidak perlu tergesa-gesa. Dekati dahulu gerai yang berwap untuk sarapan panas, kemudian berihat di hadapan anyaman rotan, tumbuhan dan snek tempatan. Kesenangan pasar bukan pada apa yang anda beli, tetapi pada cara setiap gerai membentangkan kehidupan harian bandar di bawah matahari.',
     facts: [
-      { value: '07:00', label: 'Tiba menjelang' },
-      { value: '2–3 jam', label: 'Masa selesa' },
-      { value: 'RM 5+', label: 'Bajet sarapan' },
-    ],
+  {
+    "value": "Pasar pagi Ahad",
+    "label": "Hari pasar"
+  },
+  {
+    "value": "1–2 jam",
+    "label": "Rancang lawatan"
+  },
+  {
+    "value": "Harga gerai",
+    "label": "Semak jumlah, saiz hidangan dan cara bayaran sebelum memesan."
+  }
+],
   },
   heritage: {
     eyebrow: 'LOOK UP',
@@ -71,80 +116,143 @@ export const ms: Translation = {
     eyebrow: 'A WALK DOWN JALAN GAYA',
     heading: ['Satu jalan,', 'lima cara untuk berjalan.'],
     items: [
-      { step: '01', title: 'Bermula di gerbang', note: 'Cari gerbang di sudut jalan — Gaya Street bermula di sini. Pada hari biasa, trafik dan kedai lama; pada hari Ahad, barisan pertama gerai pasar.' },
-      { step: '02', title: 'Bahagian pasar · 07:00–12:00', note: 'Cari wap dan aroma dahulu: buah, rotan, kraf, snek tempatan. Tidak perlu tergesa-gesa — biar mata anda memutuskan apa yang dibeli.' },
-      { step: '03', title: 'Angkat pandangan ke rumah kedai', note: 'Kaki lima, papan tanda pudar dan tingkap louver lama di sepanjang jalan ialah pemandangan paling tenang di Gaya Street.' },
-      { step: '04', title: 'Ke arah Signal Hill', note: 'Lihat ke selatan ke arah Menara Jam Atkinson — satu tingkap dari Gaya Street ke masa lalu. Di kaki bukit, perjalanan pekan lama bersambung.' },
-      { step: '05', title: 'Akhiri dengan pasar malam', note: 'Kembali ke kawasan Jalan Gaya pada waktu petang — asap dan kesibukan pasar malam Api-Api menutup hari jalan ini.' },
-    ],
+  {
+    "step": "01",
+    "title": "Pasar pagi Ahad",
+    "note": "Google Maps: Ahad 05:00–12:45. Panduan hujung minggu Sabah Tourism Board, terakhir disemak Oktober 2023, menyatakan 06:00–14:00. Sumber berbeza; semak notis terkini dan gerai pilihan sebelum perjalanan khas."
+  },
+  {
+    "step": "02",
+    "title": "Rumah kedai Jalan Gaya",
+    "note": "Kedai tetap mempunyai waktu sendiri, termasuk di luar hari pasar."
+  },
+  {
+    "step": "03",
+    "title": "Menara Jam Atkinson",
+    "note": "Tapak warisan di Signal Hill; sahkan akses berasingan dan jangan anggap platform tinjau dibuka."
+  },
+  {
+    "step": "04",
+    "title": "Tepi laut Kota Kinabalu",
+    "note": "Pertimbangkan laluan berasingan mengikut cuaca dan perjalanan pulang."
+  },
+  {
+    "step": "05",
+    "title": "Malam Jumaat & Sabtu",
+    "note": "Pilih Ahad untuk pasar pagi dan Jumaat atau Sabtu untuk Api-Api. Jangan anggap lawatan pagi Ahad boleh disambung ke pasar malam yang sama pada petang itu."
+  }
+],
   },
   practical: {
     eyebrow: 'FIELD GUIDE',
     heading: ['Simpan maklumat praktikal', 'dalam poket anda.'],
     cards: [
-      {
-        index: 'A / Cara ke sana',
-        title: 'Pengangkutan',
-        paras: [
-          'Lapangan terbang: Lapangan Terbang Antarabangsa Kota Kinabalu kira-kira 8 km dari pusat bandar. Teksi atau aplikasi e-hailing biasanya paling terus; bas lapangan terbang sampai ke pusat bandar, kemudian berjalan di sepanjang Jalan Pantai.',
-          'Bas: sasarkan hentian di pusat bandar, kemudian berjalan masuk ke Jalan Gaya dari sisi tepi laut. Sediakan masa untuk lencongan semasa pasar Ahad.',
-          'Teksi: sebut sahaja “Gaya Street Sunday Market / Jalan Gaya”, dan selesaikan rancangan pulang sebelum turun.',
-        ],
-      },
-      {
-        index: 'B / Masa',
-        title: 'Masa & kos',
-        paras: [
-          'Masa terbaik: Ahad 07:00–10:00 — lebih sejuk, pilihan gerai paling lengkap; waktu petang sesuai untuk kembali ke pasar malam berhampiran untuk makan.',
-          'Cadangan lawatan: 2–3 jam; dengan sarapan, jalan-jalan pekan lama dan tarikan berhampiran, rancang setengah hari.',
-          'Tiket / kos: jalan dan pasar Ahad biasanya percuma untuk masuk. Perbelanjaan mengikut harga yang dipaparkan setiap gerai; sediakan wang tunai kecil.',
-        ],
-      },
-      {
-        index: 'C / Parkir',
-        title: 'Maklumat parkir',
-        paras: [
-          'Tempat letak kereta awam dan parkir pusat beli-belah di pusat bandar ialah pilihan paling selamat. Pasar Ahad mungkin menggunakan sebahagian jalan, jadi tiba awal dan elakkan parkir di laluan gerai atau simpang.',
-        ],
-        tip: 'Petua: pakai kasut selesa, bawa air, lindungi diri daripada matahari; bawa payung ringan pada musim hujan.',
-      },
-    ],
+  {
+    "index": "01",
+    "title": "Pengangkutan & parkir",
+    "paras": [
+      "Tetapkan Gaya Street Market di Jalan Gaya sebagai destinasi. Semak tambang teksi/e-hailing semasa dan tempat mengambil penumpang di luar jalan ditutup. Tanya operator tentang perkhidmatan bas terkini.",
+      "Pilih parkir sah di luar laluan pasar yang ditutup dan ikut papan kadar. Jangan menghalang gerai, kawasan pemunggahan atau lintasan."
+    ]
+  },
+  {
+    "index": "02",
+    "title": "Pilih hari yang betul",
+    "paras": [
+      "Pilih Ahad untuk pasar pagi dan Jumaat atau Sabtu untuk Api-Api. Jangan anggap lawatan pagi Ahad boleh disambung ke pasar malam yang sama pada petang itu.",
+      "Anggaran perancangan; tambah masa untuk makan atau membeli."
+    ]
+  },
+  {
+    "index": "03",
+    "title": "Bayaran & keselesaan",
+    "paras": [
+      "Bawa wang kecil sebagai pilihan; tanya dahulu tentang kad atau QR. Bawa air dan pelindung hujan serta tentukan tempat bertemu jika datang berkumpulan.",
+      "Sahkan laluan sesuai dan tandas dengan penginapan atau perniagaan berhampiran. Laluan, orang ramai dan permukaan basah boleh menjejaskan akses; panduan ini tidak menjamin laluan tanpa tangga."
+    ]
+  }
+],
   },
   food: {
     eyebrow: 'AROUND THE BLOCK',
     heading: ['Makanan enak berdekatan,', 'bermula dengan semangkuk sup panas.'],
-    body: 'Makanan enak di sekitar Gaya Street tidak memerlukan panduan rumit: untuk sarapan cari laksa, kopi dan snek rangup; pada waktu petang, berjalan di sepanjang Jalan Gaya dan rasai kesibukan pasar malam Api-Api.',
+    body: "Bandingkan menu dan barangan yang tersedia. Pasar Ahad menggabungkan belian dan makanan; Api-Api menumpukan makanan malam. Tanya ramuan, keperluan diet dan harga pada gerai.",
     link: 'Letakkan rasa pada peta →',
     items: [
-      { no: '01', name: 'Guan’s Kopitiam Gaya Street', note: '111, Jalan Gaya · kedai kopi & sarapan' },
-      { no: '02', name: 'Api-Api Night Food Market', note: 'Jalan Gaya · makanan jalanan pada waktu malam' },
-      { no: '03', name: 'Laksa & kuih tempatan', note: 'Cari di sepanjang jalan; jangan terikat pada satu kedai' },
-    ],
+  {
+    "no": "01",
+    "name": "Buah, tanaman & kraf",
+    "note": "Bekalan berubah; tanya bahan, saiz dan cara membawa belian."
+  },
+  {
+    "no": "02",
+    "name": "Sarapan dan minuman",
+    "note": "Pilih gerai atau kedai kopi yang dibuka dan semak menu semasa."
+  },
+  {
+    "no": "03",
+    "name": "Makanan malam",
+    "note": "Lawati Api-Api pada Jumaat atau Sabtu dan sahkan gerai pilihan."
+  }
+],
   },
   nearby: {
     eyebrow: 'THINGS TO DO NEARBY',
     heading: ['Enam perkara berhampiran', 'Gaya Street — setengah hari.'],
     items: [
-      { no: '01', name: 'Pasar Ahad Gaya Street', note: 'Perhentian pertama · 07:00–12:00, jalan itu sendiri ialah pasar' },
-      { no: '02', name: 'Padang Merdeka & pekan lama', note: 'Di selatan gerai, jalan rata dan santai' },
-      { no: '03', name: 'Signal Hill & Menara Jam Atkinson', note: 'Naik sekitar sepuluh minit untuk bandar dan laut sekaligus' },
-      { no: '04', name: 'Pasar malam Api-Api', note: 'Kembali selepas gelap untuk sate, makanan laut dan laksa' },
-      { no: '05', name: 'Esplanade Kota Kinabalu', note: 'Lebih kurang 10 minit berjalan kaki · matahari terbenam di tepi laut' },
-      { no: '06', name: 'Laluan foto rumah kedai & gerbang', note: 'Kaki lima, papan tanda lama dan cahaya pagi' },
-    ],
+  {
+    "no": "01",
+    "name": "Pasar pagi Ahad",
+    "note": "Google Maps: Ahad 05:00–12:45. Panduan hujung minggu Sabah Tourism Board, terakhir disemak Oktober 2023, menyatakan 06:00–14:00. Sumber berbeza; semak notis terkini dan gerai pilihan sebelum perjalanan khas."
+  },
+  {
+    "no": "02",
+    "name": "Rumah kedai Jalan Gaya",
+    "note": "Kedai tetap mempunyai waktu sendiri, termasuk di luar hari pasar."
+  },
+  {
+    "no": "03",
+    "name": "Menara Jam Atkinson",
+    "note": "Tapak warisan di Signal Hill; sahkan akses berasingan dan jangan anggap platform tinjau dibuka."
+  },
+  {
+    "no": "04",
+    "name": "Malam Jumaat & Sabtu",
+    "note": "Api-Api Night Food Market berada di Jalan Gaya pada malam Jumaat dan Sabtu. Google Maps menyatakan 17:00–00:00; panduan pelancongan menyatakan 18:00–00:00. Ia bukan pasar setiap hari atau tempat berasingan lima minit berjalan kaki."
+  },
+  {
+    "no": "05",
+    "name": "Tepi laut Kota Kinabalu",
+    "note": "Pertimbangkan laluan berasingan mengikut cuaca dan perjalanan pulang."
+  },
+  {
+    "no": "06",
+    "name": "Rancang lawatan",
+    "note": "Anggaran perancangan; tambah masa untuk makan atau membeli."
+  }
+],
   },
   amenities: {
     eyebrow: 'PRACTICAL STUFF',
     heading: ['Bank, ATM dan kemudahan', 'berguna di sekeliling.'],
-    body: 'Hampir semua yang anda perlukan pada hari itu berada dalam pekan lama: bank dan ATM di sepanjang Jalan Gaya, pengurup wang berlesen berhampiran, farmasi, kedai serbaneka dan penginapan — semuanya dalam beberapa minit berjalan kaki.',
+    body: "Sahkan laluan sesuai dan tandas dengan penginapan atau perniagaan berhampiran. Laluan, orang ramai dan permukaan basah boleh menjejaskan akses; panduan ini tidak menjamin laluan tanpa tangga.",
     items: [
-      { no: '01', name: 'Bank & ATM', note: 'Maybank dan bank lain terletak di serta di luar Jalan Gaya — ATM cara paling mudah untuk dapatkan ringgit' },
-      { no: '02', name: 'Pengurup wang', note: 'Pengurup wang berlesen berkumpul di pekan lama dan pusat beli-belah berhampiran; bandingkan kadar dahulu' },
-      { no: '03', name: 'Farmasi & kedai serbaneka', note: 'Beberapa minit berjalan kaki untuk air, pelindung matahari dan keperluan asas' },
-      { no: '04', name: 'Tandas & air minuman', note: 'Tandas awam terhad — gunakan kedai kopi atau pusat beli-belah, dan bawa air sendiri' },
-      { no: '05', name: 'Tempat menginap', note: 'Guesthouse pekan lama dan hotel bandar semuanya boleh dijangkau dengan berjalan kaki dari pasar' },
-      { no: '06', name: 'Wi-Fi & rangkaian', note: 'Kebanyakan kedai kopi ada Wi-Fi; SIM atau eSIM tempatan dari lapangan terbang paling mudah' },
-    ],
+  {
+    "no": "01",
+    "name": "Bayaran & keselesaan",
+    "note": "Bawa wang kecil sebagai pilihan; tanya dahulu tentang kad atau QR. Bawa air dan pelindung hujan serta tentukan tempat bertemu jika datang berkumpulan."
+  },
+  {
+    "no": "02",
+    "name": "Akses & kemudahan",
+    "note": "Sahkan laluan sesuai dan tandas dengan penginapan atau perniagaan berhampiran. Laluan, orang ramai dan permukaan basah boleh menjejaskan akses; panduan ini tidak menjamin laluan tanpa tangga."
+  },
+  {
+    "no": "03",
+    "name": "Pengangkutan & parkir",
+    "note": "Pilih parkir sah di luar laluan pasar yang ditutup dan ikut papan kadar. Jangan menghalang gerai, kawasan pemunggahan atau lintasan."
+  }
+],
   },
   gallery: {
     items: [
@@ -157,7 +265,7 @@ export const ms: Translation = {
       { src: '/gallery/gaya-street-market-7.jpg', cap: 'Fasad rumah kedai dalam teduh petang' },
       { src: '/gallery/gaya-street-market-8.jpg', cap: 'Papan tanda dan pemandangan tenang kaki lima' },
     ],
-    note: '8 foto · foto lapangan, klik untuk besarkan',
+    note: "8 foto sedia ada · klik untuk besarkan",
     lightbox: { ariaLabel: 'Pemapar foto', close: 'Tutup', prev: 'Sebelum', next: 'Seterusnya' },
   },
   map: {
@@ -181,26 +289,63 @@ export const ms: Translation = {
     faqHeading: ['Masih tertanya-tanya?', 'beberapa jawapan ringkas.'],
   },
   faq: [
-    { q: 'Bilakah masa terbaik untuk melawat pasar Ahad Gaya Street?', a: 'Tiba antara 7 hingga 10 pagi pada hari Ahad — suhu lebih selesa dan pilihan gerai serta sarapan paling lengkap.' },
-    { q: 'Pukul berapa pasar Ahad ditutup?', a: 'Pasar biasanya mula tutup sekitar tengah hari, dengan peniaga mula berkemas dari 11:30. Untuk melihatnya sepenuhnya, datang awal.' },
-    { q: 'Bolehkah kereta masuk ke Gaya Street pada hari Ahad?', a: 'Semasa pasar Ahad, Jalan Gaya ditutup kepada kenderaan untuk pejalan kaki; kereta perlu membuat lencongan, jadi parkir di lot awam atau parkir pusat beli-belah berhampiran.' },
-    { q: 'Bagaimana saya pergi dari lapangan terbang Kota Kinabalu ke Gaya Street?', a: 'Lapangan terbang kira-kira 8 km dari pusat bandar — ambil teksi, e-hailing atau bas lapangan terbang, kemudian berjalan masuk ke Jalan Gaya.' },
-    { q: 'Adakah gerai menerima tunai atau kad?', a: 'Gerai kebanyakannya menerima tunai — bawa wang kecil dalam ringgit (RM). Sesetengah peniaga menerima pembayaran QR; tanya dahulu sebelum membeli.' },
-    { q: 'Adakah perlu bayaran masuk?', a: 'Jalan dan pasar Ahad biasanya percuma untuk masuk; pembelian di gerai individu dan tarikan berdekatan dikenakan bayaran berasingan.' },
-    { q: 'Adakah ATM atau pengurup wang berhampiran Gaya Street?', a: 'Ada. Maybank dan bank lain dengan ATM terletak di serta di luar Jalan Gaya, dan pengurup wang berlesen ada di sekitar pekan lama serta pusat beli-belah berhampiran — bandingkan kadar selama satu dua minit.' },
-    { q: 'Di mana pasar malam, dan pukul berapa ia bermula?', a: 'Pasar malam Api-Api hanya beberapa minit berjalan kaki dari Gaya Street dan biasanya mula hidup pada lewat petang hingga malam — sesuai dijadikan perhentian kedua selepas pasar Ahad berkemas.' },
-    { q: 'Bagaimana jika hujan?', a: 'Kaki lima di sepanjang Gaya Street memberi perlindungan yang baik dan kedai kopi mudah dijadikan tempat berteduh. Pasar memang akan berkurangan ketika hujan lebat, jadi bawa payung ringan.' },
-    { q: 'Adakah Gaya Street masih berbaloi dilawati pada hari biasa?', a: 'Ya — pada hari biasa ia jalan pekan lama yang hidup dengan kedai kopi, papan tanda pudar dan rumah kedai, dengan Menara Jam Atkinson kelihatan dari jauh. Pasarnya sendiri hanya ada pada hari Ahad.' },
-  ],
+  {
+    "q": "Bila pasar Ahad dibuka?",
+    "a": "Google Maps: Ahad 05:00–12:45. Panduan hujung minggu Sabah Tourism Board, terakhir disemak Oktober 2023, menyatakan 06:00–14:00. Sumber berbeza; semak notis terkini dan gerai pilihan sebelum perjalanan khas."
+  },
+  {
+    "q": "Adakah Api-Api dibuka setiap hari?",
+    "a": "Api-Api Night Food Market berada di Jalan Gaya pada malam Jumaat dan Sabtu. Google Maps menyatakan 17:00–00:00; panduan pelancongan menyatakan 18:00–00:00. Ia bukan pasar setiap hari atau tempat berasingan lima minit berjalan kaki."
+  },
+  {
+    "q": "Adakah dua pasar ini di kawasan yang sama?",
+    "a": "Jalan Gaya, Kota Kinabalu, Sabah — Api-Api Night Food Market berada di Jalan Gaya pada malam Jumaat dan Sabtu. Google Maps menyatakan 17:00–00:00; panduan pelancongan menyatakan 18:00–00:00. Ia bukan pasar setiap hari atau tempat berasingan lima minit berjalan kaki."
+  },
+  {
+    "q": "Bagaimana ke Gaya Street dari lapangan terbang?",
+    "a": "Tetapkan Gaya Street Market di Jalan Gaya sebagai destinasi. Semak tambang teksi/e-hailing semasa dan tempat mengambil penumpang di luar jalan ditutup. Tanya operator tentang perkhidmatan bas terkini."
+  },
+  {
+    "q": "Bolehkah bayar tanpa tunai?",
+    "a": "Bawa wang kecil sebagai pilihan; tanya dahulu tentang kad atau QR. Bawa air dan pelindung hujan serta tentukan tempat bertemu jika datang berkumpulan."
+  },
+  {
+    "q": "Bolehkah kedua-dua pasar dilawati pada Ahad yang sama?",
+    "a": "Pilih Ahad untuk pasar pagi dan Jumaat atau Sabtu untuk Api-Api. Jangan anggap lawatan pagi Ahad boleh disambung ke pasar malam yang sama pada petang itu."
+  },
+  {
+    "q": "Adakah ulasan ini langsung?",
+    "a": "Google Maps: 4.4/5 daripada 9,075 ulasan, disemak 2026-10-19. Ini rekod pada tarikh semakan."
+  },
+  {
+    "q": "Apa yang perlu disemak tentang akses?",
+    "a": "Sahkan laluan sesuai dan tandas dengan penginapan atau perniagaan berhampiran. Laluan, orang ramai dan permukaan basah boleh menjejaskan akses; panduan ini tidak menjamin laluan tanpa tangga."
+  }
+],
   sources: {
-    intro: 'Kompilasi pendidikan bukan komersial daripada sumber awam dan lawatan tapak.',
-    heading: ['Setiap catatan sejarah,', 'mempunyai sumbernya.'],
+    intro: "Panduan daripada sumber awam; disemak 2026-10-19.",
+    heading: [
+  "Sumber & maklumat disemak",
+  "Disemak 2026-10-19"
+],
     items: [
-      { label: 'Sabah Tourism', href: 'https://www.sabahtourism.com/', tag: 'Rasmi' },
-      { label: 'Wikipedia · Kota Kinabalu', href: 'https://en.wikipedia.org/wiki/Kota_Kinabalu', tag: 'Ensiklopedia' },
-      { label: 'Lawatan lapangan & temu bual peniaga (nota bukan komersial)', href: 'https://maps.app.goo.gl/i1PGV12Mrwiad9M28', tag: 'Nota lapangan' },
-    ],
-    note: 'Dikumpul daripada sumber bertulis dan kisah lisan; pembetulan dialu-alukan sekiranya fakta berbeza.',
+  {
+    "label": "Google Maps — Gaya Street Market",
+    "href": "https://maps.app.goo.gl/SuQXuQXQj2cRauvz5",
+    "tag": "Disemak 2026-10-19"
+  },
+  {
+    "label": "Sabah Tourism Board — Weekend Street",
+    "href": "https://sabahtourism.com/article/gaya-street-the-sensational-weekend-street/",
+    "tag": "2023-10-26"
+  },
+  {
+    "label": "Sabah Tourism Board — Monuments",
+    "href": "https://sabahtourism.com/article/international-day-of-monuments-and-sites/?locale=sv",
+    "tag": "2022-07-07"
+  }
+],
+    note: "Waktu dinyatakan mengikut sumber. Panduan bebas ini tidak mewakili pasar atau lembaga pelancongan.",
   },
   footer: {
     tagline: 'Satu jalan, banyak cara untuk tiba.',
@@ -209,8 +354,8 @@ export const ms: Translation = {
   jsonLd: {
     touristType: 'Penduduk tempatan dan pelancong; sesuai untuk berjalan dan fotografi',
     marketName: 'Pasar Ahad Gaya Street (Pasar Minggu)',
-    marketDescription: 'Setiap hari Ahad, Jalan Gaya ditutup kepada kenderaan dan menjadi pasar terbuka: buah-buahan, tanaman, anyaman rotan dan kraf, snek tempatan serta gerai sarapan, 07:00–12:00.',
+    marketDescription: "Google Maps: Ahad 05:00–12:45. Panduan hujung minggu Sabah Tourism Board, terakhir disemak Oktober 2023, menyatakan 06:00–14:00. Sumber berbeza; semak notis terkini dan gerai pilihan sebelum perjalanan khas.",
     nightMarketName: 'Pasar Malam Api-Api',
-    nightMarketDescription: 'Beberapa minit dari Gaya Street, pasar malam Api-Api menyajikan sate, makanan laut, laksa dan pencuci mulut tempatan dari lewat petang hingga malam.',
+    nightMarketDescription: "Api-Api Night Food Market berada di Jalan Gaya pada malam Jumaat dan Sabtu. Google Maps menyatakan 17:00–00:00; panduan pelancongan menyatakan 18:00–00:00. Ia bukan pasar setiap hari atau tempat berasingan lima minit berjalan kaki.",
   },
 };

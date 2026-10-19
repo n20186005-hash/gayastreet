@@ -1,5 +1,4 @@
 import { defineConfig } from 'astro/config';
-import cloudflare from '@astrojs/cloudflare';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 
@@ -8,7 +7,6 @@ const site = process.env.PUBLIC_SITE_URL || 'https://gayastreet.com';
 export default defineConfig({
   site,
   output: 'static',
-  adapter: cloudflare(),
   i18n: {
     defaultLocale: 'ms',
     locales: ['ms', 'en', 'zh'],
@@ -19,11 +17,10 @@ export default defineConfig({
   redirects: {
     '/': '/ms/',
   },
-  session: {
-    driver: 'memory',
-  },
   integrations: [
     sitemap({
+      changefreq: 'weekly',
+      filter: page => !/\/404(?:\.html|\/)?$/.test(page) && new URL(page).pathname !== "/",
       serialize(item) {
         const url = new URL(item.url);
         const path = url.pathname;
@@ -38,7 +35,9 @@ export default defineConfig({
                 : path.endsWith('/things-to-do/')
                   ? 0.7
                   : 0.6;
-        return { ...item, priority, changefreq: 'weekly', lastmod: new Date() };
+        const slug=path.replace(/^\/(?:ms|en|zh)\//,'');
+        const links=[{lang:'ms',url:site+'/ms/'+slug},{lang:'en',url:site+'/en/'+slug},{lang:'zh-Hans',url:site+'/zh/'+slug},{lang:'x-default',url:site+'/ms/'+slug}];
+        return { ...item, links, priority };
       },
     }),
   ],

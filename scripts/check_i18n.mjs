@@ -11,11 +11,14 @@ const files = {
   ms: 'src/i18n/ms.ts',
 };
 
+/** @param {string} src */
 const topKey = (src) => [...src.matchAll(/^\s{2}(\w+):/gm)].map((m) => m[1]);
+/** @param {string} src */
 const cjk = (src) => [...src.matchAll(/[\u4e00-\u9fff\u3000-\u303f\uff00-\uffef]+/g)].map((m) => m[0].slice(0, 30));
 
 let failed = false;
 
+/** @type {Record<string, {src: string, keys: string[]}>} */
 const parsed = {};
 for (const [code, file] of Object.entries(files)) {
   const src = readFileSync(join(root, file), 'utf8');

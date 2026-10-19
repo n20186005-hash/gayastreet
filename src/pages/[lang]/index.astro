@@ -4,7 +4,7 @@ import SeoHead from '../../components/SeoHead.astro';
 import PageBody from '../../components/PageBody.astro';
 import { translations } from '../../i18n/translations';
 import { languages } from '../../i18n/ui';
-import { nextSunday, postalAddress as address, geo, place, TZ } from '../../lib/place';
+import { postalAddress as address, geo, place } from '../../lib/place';
 import { webp } from '../../lib/images';
 
 export function getStaticPaths() {
@@ -55,86 +55,8 @@ const jsonLd = {
       hasMap: place.hasMap,
       isAccessibleForFree: true,
       publicAccess: true,
-      openingHoursSpecification: [
-        { '@type': 'OpeningHoursSpecification', dayOfWeek: 'Sunday', opens: '07:00', closes: '12:00' },
-      ],
       touristType: t.jsonLd.touristType,
-      aggregateRating: {
-        '@type': 'AggregateRating',
-        ratingValue: '4.4',
-        reviewCount: '8967',
-        bestRating: '5',
-        worstRating: '1',
-      },
-      sameAs: [
-        'https://www.sabahtourism.com/',
-        'https://en.wikipedia.org/wiki/Kota_Kinabalu',
-      ],
-    },
-    {
-      '@type': 'Event',
-      '@id': `${canonical}#sunday-market`,
-      name: t.jsonLd.marketName,
-      description: t.jsonLd.marketDescription,
-      url: `${canonical}#market`,
-      image: ogImage,
-      inLanguage: t.htmlLang,
-      startDate: `${nextSunday}T07:00${TZ}`,
-      endDate: `${nextSunday}T12:00${TZ}`,
-      eventStatus: 'https://schema.org/EventScheduled',
-      eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
-      isAccessibleForFree: true,
-      location: { '@type': 'Place', name: 'Gaya Street (Jalan Gaya)', address, geo, hasMap: place.hasMap },
-      eventSchedule: {
-        '@type': 'Schedule',
-        repeatFrequency: 'P1W',
-        byDay: 'https://schema.org/Sunday',
-        startTime: '07:00',
-        endTime: '12:00',
-        scheduleTimezone: 'Asia/Kuala_Lumpur',
-      },
-    },
-    {
-      '@type': 'Event',
-      '@id': `${canonical}#night-market`,
-      name: t.jsonLd.nightMarketName,
-      description: t.jsonLd.nightMarketDescription,
-      url: `${canonical}#nearby`,
-      image: ogImage,
-      inLanguage: t.htmlLang,
-      startDate: `${nextSunday}T17:00${TZ}`,
-      endDate: `${nextSunday}T22:00${TZ}`,
-      eventStatus: 'https://schema.org/EventScheduled',
-      eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
-      isAccessibleForFree: true,
-      location: {
-        '@type': 'Place',
-        name: 'Api-Api Night Market',
-        address: {
-          '@type': 'PostalAddress',
-          streetAddress: 'Api-Api, off Jalan Gaya',
-          addressLocality: 'Kota Kinabalu',
-          postalCode: '88000',
-          addressRegion: 'Sabah',
-          addressCountry: 'MY',
-        },
-      },
-      eventSchedule: {
-        '@type': 'Schedule',
-        repeatFrequency: 'P1W',
-        byDay: [
-          'https://schema.org/Monday',
-          'https://schema.org/Tuesday',
-          'https://schema.org/Wednesday',
-          'https://schema.org/Thursday',
-          'https://schema.org/Friday',
-          'https://schema.org/Saturday',
-          'https://schema.org/Sunday',
-        ],
-        startTime: '17:00',
-        endTime: '22:00',
-        scheduleTimezone: 'Asia/Kuala_Lumpur',
-      },
+      sameAs: [place.hasMap],
     },
     {
       '@type': 'FAQPage',
