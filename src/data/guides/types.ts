@@ -1,7 +1,5 @@
 /**
- * Topic pages built for the highest-intent search queries in Search Console:
- * `gaya street sunday market`, `gaya street night market` and
- * `things to do in kota kinabalu` (high impressions, near-zero clicks).
+ * Localized topic pages for market schedules and visitor planning.
  *
  * Each slug ships in all three site locales (en / ms / zh) and is rendered by
  * src/pages/[lang]/[slug].astro.
